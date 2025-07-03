@@ -2,92 +2,141 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Panda - Ethical Hacker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: Arial, sans-serif;
       background: #0d1117;
       color: #c9d1d9;
       margin: 0;
-      padding: 0;
-    }
-    header {
-      background: #161b22;
-      padding: 20px;
+      height: 100vh;
+      font-family: 'Fira Code', monospace;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
       text-align: center;
+      overflow: hidden;
     }
-    h1 {
+
+    .avatar {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 3px solid #58a6ff;
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+
+    .hacker-img {
+      max-width: 100%;
+      width: 300px;
+      margin-top: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,255,150,0.2);
+    }
+
+    .animated-name {
+      font-size: 2.5rem;
+      font-weight: bold;
       color: #58a6ff;
+      text-shadow: 0 0 15px #58a6ff;
+      margin-bottom: 10px;
     }
-    section {
-      padding: 40px 20px;
-      max-width: 800px;
-      margin: auto;
-    }
-    .btn {
-      background: #238636;
-      color: white;
-      padding: 10px 20px;
-      text-decoration: none;
-      border-radius: 5px;
-      display: inline-block;
-    }
-    footer {
-      background: #161b22;
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9em;
+
+    .typewriter {
+      font-size: 1.2rem;
       color: #8b949e;
+      border-right: 2px solid #58a6ff;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 0;
+      animation: typing 3s steps(30, end) forwards, blink 0.75s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    #about {
+      background-color: #161b22;
+      padding: 2rem;
+      border-radius: 12px;
+      margin: 2rem auto;
+      max-width: 800px;
+      box-shadow: 0 0 20px rgba(0, 255, 150, 0.1);
+    }
+
+    #about h2 {
+      color: #58a6ff;
+      font-size: 2rem;
+    }
+
+    #about p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .contact h1 {
+      color: #58a6ff;
+      font-size: 2rem;
+      margin-top: 3rem;
+    }
+
+    .contact p a {
+      margin: 0.5rem;
+      display: inline-block;
     }
   </style>
 </head>
 <body>
+  <img class="avatar" src="your-selfie.jpg" alt="Panda">
 
-<header>
-  <h1>Panda</h1>
-  <p>Certified Ethical Hacker | Cybersecurity Enthusiast | Bug Bounty Hunter</p>
-</header>
+  <div class="animated-name" id="animated-name">Panda🐼</div>
 
-<section id="about">
-  <h2>About Me</h2>
-  <p>
-    Hi, I'm Panda — a passionate and skilled ethical hacker with a strong dedication to digital defense.
-    I specialize in penetration testing, vulnerability assessments, and ethical hacking strategies.
-    My mission is to help individuals and businesses stay safe from malicious cyber threats.
-  </p>
-</section>
+  <div class="typewriter">Ethical Hacker | Cybersecurity | Rust & C++ Enthusiast</div>
 
-<section id="services">
-  <h2>Services</h2>
-  <ul>
-    <li>✔️ Website Penetration Testing</li>
-    <li>✔️ Mobile App Security Analysis</li>
-    <li>✔️ Network Vulnerability Assessment</li>
-    <li>✔️ Bug Bounty Reports & Consultation</li>
-    <li>✔️ Cybersecurity Awareness Training</li>
-  </ul>
-</section>
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      Hello! I'm <strong style="color:#00ffaa">Panda</strong> (Rohith Abhi) — a self-taught ethical hacker with a deep passion for cybersecurity and digital safety.<br><br>
+      I specialize in uncovering vulnerabilities, ethically exploiting systems, and helping organizations strengthen their defenses.<br><br>
+      I'm also expanding my skill set by learning programming languages like <strong style="color:#ff79c6">Rust</strong>, <strong style="color:#bd93f9">Haskell</strong>, <strong style="color:#8be9fd">C++</strong>, and <strong style="color:#50fa7b">Prolog</strong>.
+    </p>
+  </section>
 
-<section id="skills">
-  <h2>Skills</h2>
-  <ul>
-    <li>✅ Kali Linux, Burp Suite, Metasploit</li>
-    <li>✅ OWASP Top 10</li>
-    <li>✅ SQLi, XSS, CSRF, IDOR Testing</li>
-    <li>✅ Python, Bash, Recon Tools</li>
-  </ul>
-</section>
+  <img class="hacker-img" src="your-hacker-mask.jpg" alt="Hacker Panda with Mask">
 
-<section id="contact">
-  <h2>Contact Me</h2>
-  <p>📞 Phone: <a href="tel:+919946605328" class="btn">+91 99466 05328</a></p>
-  <p>📧 Email: <a href="mailto:youremail@example.com" class="btn">youremail@example.com</a></p>
-</section>
+  <div class="contact">
+    <h1 align="center"><b>Contact Me</b> 
+      <img src="https://media.giphy.com/media/Y3rK10Qk3ipWc/giphy.gif" width="35">
+    </h1>
+    <p align="center">
+      <a href="mailto:ahanrohith123@gmail.com">
+        <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
+      </a>
+      <a href="https://www.instagram.com/rohith_abhi">
+        <img src="https://img.shields.io/badge/Instagram-E75480?style=for-the-badge&logo=instagram&logoColor=white" />
+      </a>
+      <a href="https://wa.me/919946605328">
+        <img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" />
+      </a>
+    </p>
+  </div>
 
-<footer>
-  <p>© 2025 Panda | Ethical Hacker. All rights reserved.</p>
-</footer>
-
+  <script>
+    const names = ["Panda🐼", "P4nda", "P4NDA"];
+    let index = 0;
+    setInterval(() => {
+      index = (index + 1) % names.length;
+      document.getElementById("animated-name").textContent = names[index];
+    }, 1500);
+  </script>
 </body>
 </html>

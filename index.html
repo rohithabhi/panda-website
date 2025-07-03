@@ -6,18 +6,64 @@
   <title>Panda - Ethical Hacker</title>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
   <style>
+    * { box-sizing: border-box; }
+
     body {
+      margin: 0;
+      font-family: 'Fira Code', monospace;
       background: #0d1117;
       color: #c9d1d9;
-      margin: 0;
-      height: 100vh;
-      font-family: 'Fira Code', monospace;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      text-align: center;
-      overflow: hidden;
+      overflow-x: hidden;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background: #161b22;
+      padding-top: 60px;
+      transition: 0.3s;
+      z-index: 1000;
+    }
+
+    .sidebar a {
+      padding: 10px 20px;
+      text-decoration: none;
+      font-size: 18px;
+      color: white;
+      display: block;
+    }
+
+    .sidebar a:hover {
+      background-color: #333;
+    }
+
+    .openbtn {
+      font-size: 25px;
+      cursor: pointer;
+      background-color: #161b22;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 1100;
+    }
+
+    #main {
+      transition: margin-left .3s;
+      padding: 20px;
+      margin-top: 60px;
+    }
+
+    .closebtn {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 36px;
     }
 
     .avatar {
@@ -27,14 +73,6 @@
       border: 3px solid #58a6ff;
       object-fit: cover;
       margin-bottom: 20px;
-    }
-
-    .hacker-img {
-      max-width: 100%;
-      width: 300px;
-      margin-top: 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0,255,150,0.2);
     }
 
     .animated-name {
@@ -64,23 +102,18 @@
       50% { border-color: transparent; }
     }
 
-    #about {
-      background-color: #161b22;
+    section {
       padding: 2rem;
-      border-radius: 12px;
-      margin: 2rem auto;
       max-width: 800px;
-      box-shadow: 0 0 20px rgba(0, 255, 150, 0.1);
+      margin: auto;
     }
 
-    #about h2 {
-      color: #58a6ff;
-      font-size: 2rem;
-    }
-
-    #about p {
-      font-size: 1.1rem;
-      line-height: 1.8;
+    .hacker-img {
+      max-width: 100%;
+      width: 300px;
+      margin-top: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,255,150,0.2);
     }
 
     .contact h1 {
@@ -96,24 +129,51 @@
   </style>
 </head>
 <body>
-  <img class="avatar" src="your-selfie.jpg" alt="Panda">
 
-  <div class="animated-name" id="animated-name">Panda🐼</div>
+<!-- Sidebar Navigation -->
+<div id="mySidebar" class="sidebar">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+  <a href="#home">🏠 Home</a>
+  <a href="#about">👤 About</a>
+  <a href="#projects">🖼 Projects</a>
+  <a href="#contact">✍️ Contact</a>
+</div>
 
-  <div class="typewriter">Ethical Hacker | Cybersecurity | Rust & C++ Enthusiast</div>
+<!-- Open Sidebar Button -->
+<button class="openbtn" onclick="openNav()">☰</button>
 
+<!-- Main Content -->
+<div id="main">
+
+  <!-- Home Section -->
+  <section id="home" style="text-align:center;">
+    <img class="avatar" src="your-selfie.jpg" alt="Panda">
+    <div class="animated-name" id="animated-name">Panda🐼</div>
+    <div class="typewriter">Ethical Hacker | Cybersecurity | Rust & C++ Enthusiast</div>
+  </section>
+
+  <!-- About Section -->
   <section id="about">
-    <h2>About Me</h2>
+    <h2 style="color:#00ffaa; font-size:2rem; letter-spacing:1px;">✨ LET ME INTRODUCE MYSELF ✨</h2>
+    <h3 style="color:#58a6ff; font-size:1.5rem; margin-top: 1rem;">About Me</h3>
     <p>
       Hello! I'm <strong style="color:#00ffaa">Panda</strong> (Rohith Abhi) — a self-taught ethical hacker with a deep passion for cybersecurity and digital safety.<br><br>
       I specialize in uncovering vulnerabilities, ethically exploiting systems, and helping organizations strengthen their defenses.<br><br>
-      I'm also expanding my skill set by learning programming languages like <strong style="color:#ff79c6">Rust</strong>, <strong style="color:#bd93f9">Haskell</strong>, <strong style="color:#8be9fd">C++</strong>, and <strong style="color:#50fa7b">Prolog</strong>.
+      I'm also expanding my skill set by learning programming languages like
+      <strong style="color:#ff79c6">Rust</strong>,
+      <strong style="color:#bd93f9">Haskell</strong>,
+      <strong style="color:#8be9fd">C++</strong>,
+      and <strong style="color:#50fa7b">Prolog</strong>.
     </p>
   </section>
 
-  <img class="hacker-img" src="your-hacker-mask.jpg" alt="Hacker Panda with Mask">
+  <!-- Projects Section -->
+  <section id="projects" style="text-align:center;">
+    <img class="hacker-img" src="your-hacker-mask.jpg" alt="Hacker Panda with Mask">
+  </section>
 
-  <div class="contact">
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
     <h1 align="center"><b>Contact Me</b> 
       <img src="https://media.giphy.com/media/Y3rK10Qk3ipWc/giphy.gif" width="35">
     </h1>
@@ -128,15 +188,26 @@
         <img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" />
       </a>
     </p>
-  </div>
+  </section>
+</div>
 
-  <script>
-    const names = ["Panda🐼", "P4nda", "P4NDA"];
-    let index = 0;
-    setInterval(() => {
-      index = (index + 1) % names.length;
-      document.getElementById("animated-name").textContent = names[index];
-    }, 1500);
-  </script>
+<!-- JavaScript for Animations + Sidebar -->
+<script>
+  const names = ["Panda🐼", "P4nda", "P4NDA"];
+  let index = 0;
+  setInterval(() => {
+    index = (index + 1) % names.length;
+    document.getElementById("animated-name").textContent = names[index];
+  }, 1500);
+
+  function openNav() {
+    document.getElementById("mySidebar").style.left = "0";
+  }
+
+  function closeNav() {
+    document.getElementById("mySidebar").style.left = "-250px";
+  }
+</script>
+
 </body>
 </html>

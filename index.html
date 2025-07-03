@@ -6,64 +6,13 @@
   <title>Panda - Ethical Hacker</title>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
   <style>
-    * { box-sizing: border-box; }
-
     body {
+      background: linear-gradient(145deg, #121212, #1e1e1e, #2b2b2b);
+      color: #c9d1d9;
       margin: 0;
       font-family: 'Fira Code', monospace;
-      background: #0d1117;
-      color: #c9d1d9;
       overflow-x: hidden;
-    }
-
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: -250px;
-      width: 250px;
-      height: 100%;
-      background: #161b22;
-      padding-top: 60px;
-      transition: 0.3s;
-      z-index: 1000;
-    }
-
-    .sidebar a {
-      padding: 10px 20px;
-      text-decoration: none;
-      font-size: 18px;
-      color: white;
-      display: block;
-    }
-
-    .sidebar a:hover {
-      background-color: #333;
-    }
-
-    .openbtn {
-      font-size: 25px;
-      cursor: pointer;
-      background-color: #161b22;
-      color: white;
-      padding: 10px 15px;
-      border: none;
-      position: fixed;
-      top: 10px;
-      left: 10px;
-      z-index: 1100;
-    }
-
-    #main {
-      transition: margin-left .3s;
-      padding: 20px;
-      margin-top: 60px;
-    }
-
-    .closebtn {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      font-size: 36px;
+      scroll-behavior: smooth;
     }
 
     .avatar {
@@ -72,25 +21,28 @@
       border-radius: 50%;
       border: 3px solid #58a6ff;
       object-fit: cover;
-      margin-bottom: 20px;
+      margin-top: 30px;
     }
 
-    .animated-name {
-      font-size: 2.5rem;
-      font-weight: bold;
-      color: #58a6ff;
-      text-shadow: 0 0 15px #58a6ff;
-      margin-bottom: 10px;
+    .intro-typewriter {
+      text-align: center;
+      margin-top: 2rem;
     }
 
-    .typewriter {
-      font-size: 1.2rem;
-      color: #8b949e;
-      border-right: 2px solid #58a6ff;
+    .intro-typewriter h2 {
+      font-size: 1.8rem;
+      color: white;
       white-space: nowrap;
+      border-right: 2px solid #58a6ff;
       overflow: hidden;
       width: 0;
-      animation: typing 3s steps(30, end) forwards, blink 0.75s step-end infinite;
+      animation: typing 4s steps(40, end) forwards, blink 0.75s step-end infinite;
+    }
+
+    .typed-highlight {
+      color: #00ffaa;
+      font-weight: bold;
+      text-shadow: 0 0 10px #00ffaa;
     }
 
     @keyframes typing {
@@ -102,10 +54,32 @@
       50% { border-color: transparent; }
     }
 
-    section {
+    .animated-name {
+      font-size: 2.2rem;
+      font-weight: bold;
+      color: #58a6ff;
+      text-shadow: 0 0 15px #58a6ff;
+      margin-bottom: 10px;
+    }
+
+    #about {
+      background-color: rgba(28, 28, 28, 0.6);
+      backdrop-filter: blur(10px);
       padding: 2rem;
+      border-radius: 12px;
+      margin: 2rem auto;
       max-width: 800px;
-      margin: auto;
+      box-shadow: 0 0 20px rgba(0, 255, 150, 0.1);
+    }
+
+    #about h2 {
+      color: #58a6ff;
+      font-size: 2rem;
+    }
+
+    #about p {
+      font-size: 1.1rem;
+      line-height: 1.8;
     }
 
     .hacker-img {
@@ -126,54 +100,41 @@
       margin: 0.5rem;
       display: inline-block;
     }
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      padding: 20px;
+      color: #8b949e;
+      font-size: 0.9rem;
+    }
+
+    footer strong {
+      color: #58a6ff;
+    }
   </style>
 </head>
 <body>
+  <img class="avatar" src="your-selfie.jpg" alt="Panda">
 
-<!-- Sidebar Navigation -->
-<div id="mySidebar" class="sidebar">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-  <a href="#home">🏠 Home</a>
-  <a href="#about">👤 About</a>
-  <a href="#projects">🖼 Projects</a>
-  <a href="#contact">✍️ Contact</a>
-</div>
+  <div class="animated-name" id="animated-name">Panda🐼</div>
 
-<!-- Open Sidebar Button -->
-<button class="openbtn" onclick="openNav()">☰</button>
+  <div class="intro-typewriter">
+    <h2 id="typewriter-text"></h2>
+  </div>
 
-<!-- Main Content -->
-<div id="main">
-
-  <!-- Home Section -->
-  <section id="home" style="text-align:center;">
-    <img class="avatar" src="your-selfie.jpg" alt="Panda">
-    <div class="animated-name" id="animated-name">Panda🐼</div>
-    <div class="typewriter">Ethical Hacker | Cybersecurity | Rust & C++ Enthusiast</div>
-  </section>
-
-  <!-- About Section -->
   <section id="about">
-    <h2 style="color:#00ffaa; font-size:2rem; letter-spacing:1px;">✨ LET ME INTRODUCE MYSELF ✨</h2>
-    <h3 style="color:#58a6ff; font-size:1.5rem; margin-top: 1rem;">About Me</h3>
+    <h2>About Me</h2>
     <p>
       Hello! I'm <strong style="color:#00ffaa">Panda</strong> (Rohith Abhi) — a self-taught ethical hacker with a deep passion for cybersecurity and digital safety.<br><br>
       I specialize in uncovering vulnerabilities, ethically exploiting systems, and helping organizations strengthen their defenses.<br><br>
-      I'm also expanding my skill set by learning programming languages like
-      <strong style="color:#ff79c6">Rust</strong>,
-      <strong style="color:#bd93f9">Haskell</strong>,
-      <strong style="color:#8be9fd">C++</strong>,
-      and <strong style="color:#50fa7b">Prolog</strong>.
+      I'm also expanding my skill set by learning programming languages like <strong style="color:#ff79c6">Rust</strong>, <strong style="color:#bd93f9">Haskell</strong>, <strong style="color:#8be9fd">C++</strong>, and <strong style="color:#50fa7b">Prolog</strong>.
     </p>
   </section>
 
-  <!-- Projects Section -->
-  <section id="projects" style="text-align:center;">
-    <img class="hacker-img" src="your-hacker-mask.jpg" alt="Hacker Panda with Mask">
-  </section>
+  <img class="hacker-img" src="your-hacker-mask.jpg" alt="Hacker Panda with Mask">
 
-  <!-- Contact Section -->
-  <section id="contact" class="contact">
+  <div class="contact">
     <h1 align="center"><b>Contact Me</b> 
       <img src="https://media.giphy.com/media/Y3rK10Qk3ipWc/giphy.gif" width="35">
     </h1>
@@ -188,26 +149,38 @@
         <img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" />
       </a>
     </p>
-  </section>
-</div>
+  </div>
 
-<!-- JavaScript for Animations + Sidebar -->
-<script>
-  const names = ["Panda🐼", "P4nda", "P4NDA"];
-  let index = 0;
-  setInterval(() => {
-    index = (index + 1) % names.length;
-    document.getElementById("animated-name").textContent = names[index];
-  }, 1500);
+  <footer>
+    © 2025 <strong>Panda</strong> 🐼 | All Rights Reserved.
+  </footer>
 
-  function openNav() {
-    document.getElementById("mySidebar").style.left = "0";
-  }
+  <script>
+    const names = ["Panda🐼", "P4nda", "P4NDA"];
+    let index = 0;
+    setInterval(() => {
+      index = (index + 1) % names.length;
+      document.getElementById("animated-name").textContent = names[index];
+    }, 1500);
 
-  function closeNav() {
-    document.getElementById("mySidebar").style.left = "-250px";
-  }
-</script>
-
+    const fullText = 'Hi There! 👋🏻<br>I\'M <span class="typed-highlight">PANDA🐼</span>';
+    const typeTarget = document.getElementById("typewriter-text");
+    let i = 0;
+    function typeWriter() {
+      if (i < fullText.length) {
+        const char = fullText.charAt(i);
+        if (char === '<') {
+          const tagEnd = fullText.indexOf('>', i);
+          typeTarget.innerHTML += fullText.substring(i, tagEnd + 1);
+          i = tagEnd + 1;
+        } else {
+          typeTarget.innerHTML += char;
+          i++;
+        }
+        setTimeout(typeWriter, 50);
+      }
+    }
+    typeWriter();
+  </script>
 </body>
 </html>

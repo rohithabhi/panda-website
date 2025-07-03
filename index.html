@@ -19,7 +19,6 @@
       overflow-x: hidden;
     }
 
-    /* SIDEBAR */
     #menu-toggle {
       position: fixed;
       top: 20px;
@@ -47,7 +46,6 @@
       transition: right 0.4s ease;
       padding: 2rem 1rem;
       z-index: 998;
-      opacity: 1;
     }
 
     #sidebar.open {
@@ -107,14 +105,6 @@
       color: white;
       margin-bottom: 10px;
       text-align: center;
-      animation: fadeInOut 1.5s ease-in-out;
-      transition: all 0.3s ease-in-out;
-    }
-
-    @keyframes fadeInOut {
-      0% { opacity: 0; transform: scale(0.95); }
-      50% { opacity: 1; transform: scale(1); }
-      100% { opacity: 0; transform: scale(1.05); }
     }
 
     .intro-typewriter {
@@ -141,15 +131,8 @@
       50% { border-color: transparent; }
     }
 
-    .white-text {
-      color: white;
-      font-weight: bold;
-    }
-
-    .violet-text {
-      color: #bd93f9;
-      font-weight: bold;
-    }
+    .white-text { color: white; font-weight: bold; }
+    .violet-text { color: #bd93f9; font-weight: bold; }
 
     #about {
       background-color: rgba(28, 28, 28, 0.6);
@@ -161,24 +144,15 @@
       box-shadow: 0 0 20px rgba(0, 255, 150, 0.1);
     }
 
-    #about h2 {
-      color: #58a6ff;
-      font-size: 2rem;
-    }
-
-    #about p {
-      font-size: 1.1rem;
-      line-height: 1.8;
-    }
+    #about h2 { color: #58a6ff; font-size: 2rem; }
+    #about p { font-size: 1.1rem; line-height: 1.8; }
 
     #blogs {
       padding: 2rem;
       text-align: center;
     }
 
-    #blogs h2 {
-      color: #58a6ff;
-    }
+    #blogs h2 { color: #58a6ff; }
 
     .hacker-img {
       max-width: 100%;
@@ -209,8 +183,6 @@
   </style>
 </head>
 <body>
-
-  <!-- Sidebar Navigation -->
   <div id="menu-toggle">
     <div></div>
     <div></div>
@@ -227,7 +199,6 @@
     </ul>
   </nav>
 
-  <!-- HOME -->
   <div id="home">
     <img class="avatar" src="your-selfie.jpg" alt="Panda">
     <div class="animated-name" id="animated-name">Panda🐼</div>
@@ -236,29 +207,20 @@
     </div>
   </div>
 
-  <!-- ABOUT -->
   <section id="about">
     <h2>About Me</h2>
     <p>
-      Hello! I'm <strong style="color:#00ffaa">Panda</strong> (Rohith Abhi) — a self-taught ethical hacker with a deep passion for cybersecurity and digital safety.<br><br>
-      I specialize in uncovering vulnerabilities, ethically exploiting systems, and helping organizations strengthen their defenses.<br><br>
-      I'm also expanding my skill set by learning programming languages like <strong style="color:#ff79c6">Rust</strong>, <strong style="color:#bd93f9">Haskell</strong>, <strong style="color:#8be9fd">C++</strong>, and <strong style="color:#50fa7b">Prolog</strong>.
+      Hello! I'm <strong style="color:#00ffaa">Panda</strong> (Rohith Abhi) — a self-taught ethical hacker with a deep passion for cybersecurity and digital safety.
     </p>
+    <img class="hacker-img" src="your-hacker-mask.jpg" alt="Hacker Panda with Mask">
   </section>
 
-  <!-- BLOGS -->
   <section id="blogs">
     <h2>Coming Soon: Blogs</h2>
   </section>
 
-  <!-- IMAGE -->
-  <img class="hacker-img" src="your-hacker-mask.jpg" alt="Hacker Panda with Mask">
-
-  <!-- CONTACT -->
   <div class="contact" id="contact">
-    <h1><b>Contact Me</b>
-      <img src="https://media.giphy.com/media/Y3rK10Qk3ipWc/giphy.gif" width="35">
-    </h1>
+    <h1><b>Contact Me</b> <img src="https://media.giphy.com/media/Y3rK10Qk3ipWc/giphy.gif" width="35"></h1>
     <p>
       <a href="mailto:ahanrohith123@gmail.com">
         <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
@@ -272,33 +234,15 @@
     </p>
   </div>
 
-  <!-- SCRIPT -->
   <script>
-    // Animated Name Switch
-    const names = [
-      "Panda🐼",
-      "P4nda",
-      "P4NDA",
-      "PΛИDΛ",
-      "P@nda",
-      "𝙿𝙰𝙽𝙳𝙰",
-      "ＰＡＮＤＡ",
-      "P.a.n.d.a",
-      "ƤΔИĐΔ",
-      "🅿️ANDA"
-    ];
-
+    const names = ["Panda🐼", "P4nda", "P4NDA", "PΛИDΛ", "P@nda", "𝙿𝙰𝙽𝙳𝙰", "ＰＡＮＤＡ", "P.a.n.d.a", "ƤΔИĐΔ", "🅿️ANDA"];
     let index = 0;
     setInterval(() => {
       index = (index + 1) % names.length;
       const nameEl = document.getElementById("animated-name");
-      nameEl.classList.remove("animated-name");
-      void nameEl.offsetWidth;
       nameEl.textContent = names[index];
-      nameEl.classList.add("animated-name");
     }, 1500);
 
-    // Typewriter
     const fullText = '<span class="white-text">Hi There! 👋🏻</span><br><span class="white-text">I\'M</span> <span class="violet-text">PANDA🐼</span>';
     const typeTarget = document.getElementById("typewriter-text");
     let i = 0;
@@ -318,7 +262,6 @@
     }
     typeWriter();
 
-    // Sidebar Toggle
     const sidebar = document.getElementById("sidebar");
     const toggle = document.getElementById("menu-toggle");
     const closeBtn = document.getElementById("close-btn");
@@ -345,3 +288,4 @@
   </script>
 </body>
 </html>
+

@@ -6,13 +6,93 @@
   <title>Panda - Ethical Hacker</title>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
   <style>
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 60px;
+    }
+
     body {
-      background: linear-gradient(145deg, #121212, #1e1e1e, #2b2b2b);
-      color: #c9d1d9;
+      background: linear-gradient(135deg, #0a0a0a, #111111, #1a1a1a, #111111, #0a0a0a);
+      color: #00ffcc;
       margin: 0;
       font-family: 'Fira Code', monospace;
       overflow-x: hidden;
-      scroll-behavior: smooth;
+    }
+
+    .white-text {
+      color: white;
+      font-weight: bold;
+    }
+
+    .violet-text {
+      color: #bd93f9;
+      font-weight: bold;
+      text-shadow: 0 0 10px #bd93f9;
+    }
+
+    /* Sidebar */
+    #menu-toggle {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      cursor: pointer;
+      z-index: 999;
+    }
+
+    #menu-toggle div {
+      width: 30px;
+      height: 4px;
+      background: #00ffaa;
+      margin: 6px 0;
+      transition: 0.3s ease;
+    }
+
+    #sidebar {
+      position: fixed;
+      top: 0;
+      left: -260px;
+      height: 100%;
+      width: 260px;
+      background-color: #0d0d0d;
+      box-shadow: 2px 0 15px rgba(0, 255, 150, 0.2);
+      transition: left 0.3s ease;
+      padding: 2rem 1rem;
+      z-index: 998;
+    }
+
+    #close-btn {
+      font-size: 1.8rem;
+      color: #bd93f9;
+      text-align: right;
+      cursor: pointer;
+      margin-bottom: 2rem;
+    }
+
+    #sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    #sidebar ul li {
+      margin: 1rem 0;
+    }
+
+    #sidebar ul li a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 20px;
+      color: #00ffcc;
+      text-decoration: none;
+      font-size: 1.2rem;
+      border-radius: 8px;
+      transition: background 0.2s ease;
+    }
+
+    #sidebar ul li a:hover {
+      background-color: #111111;
+      color: #00ffaa;
     }
 
     .avatar {
@@ -22,6 +102,9 @@
       border: 3px solid #58a6ff;
       object-fit: cover;
       margin-top: 30px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .intro-typewriter {
@@ -36,13 +119,7 @@
       border-right: 2px solid #58a6ff;
       overflow: hidden;
       width: 0;
-      animation: typing 4s steps(40, end) forwards, blink 0.75s step-end infinite;
-    }
-
-    .typed-highlight {
-      color: #00ffaa;
-      font-weight: bold;
-      text-shadow: 0 0 10px #00ffaa;
+      animation: typing 4s steps(60, end) forwards, blink 0.75s step-end infinite;
     }
 
     @keyframes typing {
@@ -57,9 +134,10 @@
     .animated-name {
       font-size: 2.2rem;
       font-weight: bold;
-      color: #58a6ff;
-      text-shadow: 0 0 15px #58a6ff;
+      color: white;
+      text-shadow: 0 0 10px white;
       margin-bottom: 10px;
+      text-align: center;
     }
 
     #about {
@@ -82,12 +160,29 @@
       line-height: 1.8;
     }
 
+    #blogs {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    #blogs h2 {
+      color: #58a6ff;
+    }
+
     .hacker-img {
       max-width: 100%;
       width: 300px;
       margin-top: 30px;
       border-radius: 12px;
       box-shadow: 0 0 20px rgba(0,255,150,0.2);
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .contact {
+      padding: 2rem;
+      text-align: center;
     }
 
     .contact h1 {
@@ -103,14 +198,33 @@
   </style>
 </head>
 <body>
-  <img class="avatar" src="your-selfie.jpg" alt="Panda">
 
-  <div class="animated-name" id="animated-name">Panda🐼</div>
+  <!-- SIDEBAR NAV -->
+  <div id="menu-toggle">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <nav id="sidebar">
+    <div id="close-btn">✖</div>
+    <ul>
+      <li><a href="#home">🏠 Home</a></li>
+      <li><a href="#about">👤 About</a></li>
+      <li><a href="#blogs">✍️ Blogs</a></li>
+      <li><a href="#contact">📞 Contact</a></li>
+    </ul>
+  </nav>
 
-  <div class="intro-typewriter">
-    <h2 id="typewriter-text"></h2>
+  <!-- HOME -->
+  <div id="home">
+    <img class="avatar" src="your-selfie.jpg" alt="Panda">
+    <div class="animated-name" id="animated-name">Panda🐼</div>
+    <div class="intro-typewriter">
+      <h2 id="typewriter-text"></h2>
+    </div>
   </div>
 
+  <!-- ABOUT -->
   <section id="about">
     <h2>About Me</h2>
     <p>
@@ -120,26 +234,35 @@
     </p>
   </section>
 
+  <!-- BLOGS -->
+  <section id="blogs">
+    <h2>Coming Soon: Blogs</h2>
+  </section>
+
+  <!-- IMAGE -->
   <img class="hacker-img" src="your-hacker-mask.jpg" alt="Hacker Panda with Mask">
 
-  <div class="contact">
-    <h1 align="center"><b>Contact Me</b> 
+  <!-- CONTACT -->
+  <div class="contact" id="contact">
+    <h1><b>Contact Me</b>
       <img src="https://media.giphy.com/media/Y3rK10Qk3ipWc/giphy.gif" width="35">
     </h1>
-    <p align="center">
+    <p>
       <a href="mailto:ahanrohith123@gmail.com">
         <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
       </a>
       <a href="https://www.instagram.com/rohith_abhi">
         <img src="https://img.shields.io/badge/Instagram-E75480?style=for-the-badge&logo=instagram&logoColor=white" />
       </a>
-      <a href="https://wa.me/919946605328?text=Hey%20%F0%9F%91%8B%F0%9F%8F%BB">
+      <a href="https://wa.me/919946605328">
         <img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" />
       </a>
     </p>
   </div>
 
+  <!-- SCRIPTS -->
   <script>
+    // Animated Name Switch
     const names = ["Panda🐼", "P4nda", "P4NDA"];
     let index = 0;
     setInterval(() => {
@@ -147,7 +270,8 @@
       document.getElementById("animated-name").textContent = names[index];
     }, 1500);
 
-    const fullText = 'Hi There! 👋🏻<br>I\'M <span class="typed-highlight">PANDA🐼</span>';
+    // Typewriter Effect
+    const fullText = '<span class="white-text">Hi There! 👋🏻</span><br><span class="white-text">I\'M</span> <span class="violet-text">PANDA🐼</span>';
     const typeTarget = document.getElementById("typewriter-text");
     let i = 0;
     function typeWriter() {
@@ -165,6 +289,31 @@
       }
     }
     typeWriter();
+
+    // Sidebar Controls
+    const sidebar = document.getElementById("sidebar");
+    const toggle = document.getElementById("menu-toggle");
+    const closeBtn = document.getElementById("close-btn");
+
+    toggle.addEventListener("click", () => {
+      sidebar.style.left = "0px";
+    });
+
+    closeBtn.addEventListener("click", () => {
+      sidebar.style.left = "-260px";
+    });
+
+    document.addEventListener("click", function (e) {
+      if (!sidebar.contains(e.target) && !toggle.contains(e.target)) {
+        sidebar.style.left = "-260px";
+      }
+    });
+
+    document.querySelectorAll("#sidebar a").forEach(link => {
+      link.addEventListener("click", () => {
+        sidebar.style.left = "-260px";
+      });
+    });
   </script>
 </body>
 </html>

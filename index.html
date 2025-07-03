@@ -19,22 +19,11 @@
       overflow-x: hidden;
     }
 
-    .white-text {
-      color: white;
-      font-weight: bold;
-    }
-
-    .violet-text {
-      color: #bd93f9;
-      font-weight: bold;
-      text-shadow: 0 0 10px #bd93f9;
-    }
-
-    /* Sidebar */
+    /* SIDEBAR */
     #menu-toggle {
       position: fixed;
       top: 20px;
-      left: 20px;
+      right: 20px;
       cursor: pointer;
       z-index: 999;
     }
@@ -50,14 +39,19 @@
     #sidebar {
       position: fixed;
       top: 0;
-      left: -260px;
+      right: -260px;
       height: 100%;
       width: 260px;
       background-color: #0d0d0d;
-      box-shadow: 2px 0 15px rgba(0, 255, 150, 0.2);
-      transition: left 0.3s ease;
+      box-shadow: -2px 0 15px rgba(0, 255, 150, 0.2);
+      transition: right 0.4s ease;
       padding: 2rem 1rem;
       z-index: 998;
+      opacity: 1;
+    }
+
+    #sidebar.open {
+      right: 0;
     }
 
     #close-btn {
@@ -107,6 +101,22 @@
       margin-right: auto;
     }
 
+    .animated-name {
+      font-size: 2.2rem;
+      font-weight: bold;
+      color: white;
+      margin-bottom: 10px;
+      text-align: center;
+      animation: fadeInOut 1.5s ease-in-out;
+      transition: all 0.3s ease-in-out;
+    }
+
+    @keyframes fadeInOut {
+      0% { opacity: 0; transform: scale(0.95); }
+      50% { opacity: 1; transform: scale(1); }
+      100% { opacity: 0; transform: scale(1.05); }
+    }
+
     .intro-typewriter {
       text-align: center;
       margin-top: 2rem;
@@ -131,13 +141,14 @@
       50% { border-color: transparent; }
     }
 
-    .animated-name {
-      font-size: 2.2rem;
-      font-weight: bold;
+    .white-text {
       color: white;
-      text-shadow: 0 0 10px white;
-      margin-bottom: 10px;
-      text-align: center;
+      font-weight: bold;
+    }
+
+    .violet-text {
+      color: #bd93f9;
+      font-weight: bold;
     }
 
     #about {
@@ -199,12 +210,13 @@
 </head>
 <body>
 
-  <!-- SIDEBAR NAV -->
+  <!-- Sidebar Navigation -->
   <div id="menu-toggle">
     <div></div>
     <div></div>
     <div></div>
   </div>
+
   <nav id="sidebar">
     <div id="close-btn">✖</div>
     <ul>
@@ -260,17 +272,33 @@
     </p>
   </div>
 
-  <!-- SCRIPTS -->
+  <!-- SCRIPT -->
   <script>
     // Animated Name Switch
-    const names = ["Panda🐼", "P4nda", "P4NDA"];
+    const names = [
+      "Panda🐼",
+      "P4nda",
+      "P4NDA",
+      "PΛИDΛ",
+      "P@nda",
+      "𝙿𝙰𝙽𝙳𝙰",
+      "ＰＡＮＤＡ",
+      "P.a.n.d.a",
+      "ƤΔИĐΔ",
+      "🅿️ANDA"
+    ];
+
     let index = 0;
     setInterval(() => {
       index = (index + 1) % names.length;
-      document.getElementById("animated-name").textContent = names[index];
+      const nameEl = document.getElementById("animated-name");
+      nameEl.classList.remove("animated-name");
+      void nameEl.offsetWidth;
+      nameEl.textContent = names[index];
+      nameEl.classList.add("animated-name");
     }, 1500);
 
-    // Typewriter Effect
+    // Typewriter
     const fullText = '<span class="white-text">Hi There! 👋🏻</span><br><span class="white-text">I\'M</span> <span class="violet-text">PANDA🐼</span>';
     const typeTarget = document.getElementById("typewriter-text");
     let i = 0;
@@ -290,28 +318,28 @@
     }
     typeWriter();
 
-    // Sidebar Controls
+    // Sidebar Toggle
     const sidebar = document.getElementById("sidebar");
     const toggle = document.getElementById("menu-toggle");
     const closeBtn = document.getElementById("close-btn");
 
     toggle.addEventListener("click", () => {
-      sidebar.style.left = "0px";
+      sidebar.classList.add("open");
     });
 
     closeBtn.addEventListener("click", () => {
-      sidebar.style.left = "-260px";
+      sidebar.classList.remove("open");
     });
 
     document.addEventListener("click", function (e) {
       if (!sidebar.contains(e.target) && !toggle.contains(e.target)) {
-        sidebar.style.left = "-260px";
+        sidebar.classList.remove("open");
       }
     });
 
     document.querySelectorAll("#sidebar a").forEach(link => {
       link.addEventListener("click", () => {
-        sidebar.style.left = "-260px";
+        sidebar.classList.remove("open");
       });
     });
   </script>

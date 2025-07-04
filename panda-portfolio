@@ -1,4 +1,6 @@
-panda-portfolio/
-├── index.html    ← main file
-├── style.css     ← all design (colors, fonts)
-└── script.js     ← all effects (typing, sidebar)
+your-repo/
+├── index.html
+├── style.css
+├── script.js
+├── your-selfie.jpg
+├── your-hacker-mask.jpg

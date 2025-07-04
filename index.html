@@ -258,7 +258,41 @@
 
   <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
   <script>
-    particlesJS.load('particles-js', 'particles.json'); // Change to URL if needed
+    particlesJS("particles-js", {
+      "particles": {
+        "number": {
+          "value": 100,
+          "density": { "enable": true, "value_area": 800 }
+        },
+        "color": { "value": "#ffffff" },
+        "shape": { "type": "circle" },
+        "opacity": {
+          "value": 0.5,
+          "random": false
+        },
+        "size": {
+          "value": 2,
+          "random": true
+        },
+        "move": {
+          "enable": true,
+          "speed": 1,
+          "direction": "none",
+          "out_mode": "out"
+        }
+      },
+      "interactivity": {
+        "events": {
+          "onhover": { "enable": true, "mode": "repulse" },
+          "onclick": { "enable": true, "mode": "push" }
+        },
+        "modes": {
+          "repulse": { "distance": 100 },
+          "push": { "particles_nb": 4 }
+        }
+      },
+      "retina_detect": true
+    });
 
     const names = ["Panda", "P4nda", "PΛИDΛ", "𝙿𝙰𝙽𝙳𝙰", "ＰＡＮＤＡ"];
     const textEl = document.getElementById("typed-text");

@@ -1,8 +1,0 @@
-📁 root/
-├── Script.js                 # JavaScript logic (though should be lowercase: `script.js`)
-├── index.html               # Main HTML file
-├── panda-portfolio/         # Folder (maybe with more detailed portfolio files)
-├── style.css                # Stylesheet for the website
-├── your-hacker-mask.jpg     # Image, possibly for hacker-themed section
-├── your-selfie.jpg          # Personal photo or profile image
-└── README.md (not added)    # Prompt to add documentation

@@ -4,18 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Panda - Ethical Hacker</title>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet" />
   <style>
     html {
       scroll-behavior: smooth;
       scroll-padding-top: 60px;
     }
     body {
-      background: linear-gradient(135deg, #0a0a0a, #111111, #1a1a1a, #111111, #0a0a0a);
-      color: #00ffcc;
-      font-family: 'Fira Code', monospace;
       margin: 0;
-      overflow-x: hidden;
+      font-family: 'Fira Code', monospace;
+      background: linear-gradient(135deg, #0a0a0a, #111111, #1a1a1a);
+      color: #00ffcc;
     }
     #menu-toggle {
       position: fixed;
@@ -31,21 +30,12 @@
       margin: 6px 0;
       transition: 0.3s ease;
     }
-    #menu-toggle.open div:nth-child(1) {
-      transform: rotate(45deg) translate(5px, 5px);
-    }
-    #menu-toggle.open div:nth-child(2) {
-      opacity: 0;
-    }
-    #menu-toggle.open div:nth-child(3) {
-      transform: rotate(-45deg) translate(5px, -5px);
-    }
     #sidebar {
       position: fixed;
       top: 0;
       right: -260px;
-      height: 100%;
       width: 260px;
+      height: 100%;
       background-color: #0d0d0d;
       box-shadow: -2px 0 15px rgba(0, 255, 150, 0.2);
       transition: right 0.4s ease;
@@ -58,7 +48,6 @@
     #sidebar ul {
       list-style: none;
       padding: 0;
-      margin: 0;
     }
     #sidebar ul li {
       margin: 1rem 0;
@@ -75,8 +64,7 @@
       transition: background 0.2s ease;
     }
     #sidebar ul li a:hover {
-      background-color: #111111;
-      color: #00ffaa;
+      background-color: #111;
     }
     .avatar {
       width: 150px;
@@ -84,14 +72,12 @@
       border-radius: 50%;
       border: 3px solid #58a6ff;
       object-fit: cover;
-      margin: 30px auto 0;
       display: block;
+      margin: 30px auto 0;
     }
     .typing-box {
       font-size: 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      text-align: center;
       margin-top: 1rem;
     }
     .cursor {
@@ -122,16 +108,14 @@
     #about p {
       font-size: 1.1rem;
       line-height: 1.8;
+      color: #ccc;
     }
     .hacker-img {
-      max-width: 100%;
       width: 300px;
-      margin-top: 30px;
       border-radius: 12px;
       box-shadow: 0 0 20px rgba(0,255,150,0.2);
       display: block;
-      margin-left: auto;
-      margin-right: auto;
+      margin: 30px auto 0;
     }
     .contact {
       padding: 2rem;
@@ -149,60 +133,26 @@
     footer {
       text-align: center;
       padding: 1rem;
-      background-color: #0d0d0d;
       font-size: 0.9rem;
-      color: #888;
-    }
-    /* Loading Screen */
-    #loading-screen {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: #000;
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 0.5s ease;
-    }
-    .spinner {
-      width: 50px;
-      height: 50px;
-      border: 5px solid #333;
-      border-top: 5px solid #00ffaa;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+      color: #777;
     }
   </style>
 </head>
 <body>
-  <!-- Loading Screen -->
-  <div id="loading-screen">
-    <div class="spinner"></div>
-  </div>
-
-  <!-- Menu Toggle -->
   <div id="menu-toggle">
     <div></div>
     <div></div>
     <div></div>
   </div>
 
-  <!-- Sidebar -->
   <nav id="sidebar">
     <ul>
-      <li><a href="#home">🏠 Home</a></li>
-      <li><a href="#about">👤 About</a></li>
-      <li><a href="#contact">📞 Contact</a></li>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 
-  <!-- Home Section -->
   <div id="home">
     <img class="avatar" src="your-selfie.jpg" alt="Panda">
     <div class="typing-box">
@@ -210,20 +160,18 @@
     </div>
   </div>
 
-  <!-- About Section -->
   <section id="about">
     <h2>About Me</h2>
     <p>
-      Hello! I'm <strong style="color:#00ffaa">Panda</strong> (Rohith Abhi) — a self-taught ethical hacker with a deep passion for cybersecurity and digital safety.<br><br>
+      Hello! I'm <strong style="color:#8A2BE2">Panda</strong> (Rohith Abhi), a self-taught ethical hacker with a deep passion for cybersecurity and digital safety.<br><br>
       I specialize in uncovering vulnerabilities, ethically exploiting systems, and helping organizations strengthen their defenses.<br><br>
-      I'm also learning <strong style="color:#ff79c6">Rust</strong>, <strong style="color:#bd93f9">Haskell</strong>, <strong style="color:#8be9fd">C++</strong>, and <strong style="color:#50fa7b">Prolog</strong>.
+      I'm also expanding my skills by learning programming languages like Rust, Haskell, C++, and Prolog.
     </p>
     <img class="hacker-img" src="your-hacker-mask.jpg" alt="Hacker Panda with Mask">
   </section>
 
-  <!-- Contact Section -->
   <div class="contact" id="contact">
-    <h1><b>Contact Me</b></h1>
+    <h1>Contact Me</h1>
     <p>
       <a href="mailto:ahanrohith123@gmail.com">
         <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
@@ -237,17 +185,24 @@
     </p>
   </div>
 
-  <!-- Footer -->
   <footer>
-    &copy; 2025 Panda (Rohith Abhi). All rights reserved.
+    Designed and Developed by Panda<br>
+    Copyright © 2025 rohithabhi
   </footer>
 
-  <!-- Scripts -->
   <script>
-    // Typing animation
-    const names = ["Panda🐼", "P4nda", "P4NDA", "PΛИDΛ", "𝙿𝙰𝙽𝙳𝙰", "ＰＡＮＤＡ", "P.a.n.d.a"];
+    const names = [
+      "Panda",
+      "P4nda",
+      "PΛИDΛ",
+      "𝙿𝙰𝙽𝙳𝙰",
+      "ＰＡＮＤＡ"
+    ];
     const textEl = document.getElementById("typed-text");
-    let nameIndex = 0, charIndex = 0, isDeleting = false, delayBeforeTyping = true;
+    let nameIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let delayBeforeTyping = true;
 
     function typeEffect() {
       const currentName = names[nameIndex];
@@ -278,37 +233,25 @@
         }
       }
     }
-
     typeEffect();
 
-    // Sidebar Toggle
     const sidebar = document.getElementById("sidebar");
     const toggle = document.getElementById("menu-toggle");
 
     toggle.addEventListener("click", () => {
       sidebar.classList.toggle("open");
-      toggle.classList.toggle("open");
     });
 
     document.addEventListener("click", function (e) {
       if (!sidebar.contains(e.target) && !toggle.contains(e.target)) {
         sidebar.classList.remove("open");
-        toggle.classList.remove("open");
       }
     });
 
     document.querySelectorAll("#sidebar a").forEach(link => {
       link.addEventListener("click", () => {
         sidebar.classList.remove("open");
-        toggle.classList.remove("open");
       });
-    });
-
-    // Loading screen
-    window.addEventListener('load', () => {
-      const loader = document.getElementById('loading-screen');
-      loader.style.opacity = 0;
-      setTimeout(() => loader.style.display = 'none', 500);
     });
   </script>
 </body>

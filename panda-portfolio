@@ -1,1 +1,4 @@
-
+panda-portfolio/
+├── index.html    ← main file
+├── style.css     ← all design (colors, fonts)
+└── script.js     ← all effects (typing, sidebar)

@@ -1,14 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">  
-<head>  
-  <meta charset="UTF-8">  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-  <title>Panda - Ethical Hacker</title>  
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">  
-  <style>  
-    html { scroll-behavior: smooth; scroll-padding-top: 60px; }
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panda - Ethical Hacker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 60px;
+    }
     body {
-      background: linear-gradient(135deg, #0a0a0a, #111111, #1a1a1a, #111111, #0a0a0a);  
+      background: linear-gradient(135deg, #0a0a0a, #111111, #1a1a1a, #111111, #0a0a0a);
       color: #00ffcc;
       font-family: 'Fira Code', monospace;
       margin: 0;
@@ -28,6 +31,16 @@
       margin: 6px 0;
       transition: 0.3s ease;
     }
+    #menu-toggle.open div:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    #menu-toggle.open div:nth-child(2) {
+      opacity: 0;
+    }
+    #menu-toggle.open div:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
     #sidebar {
       position: fixed;
       top: 0;
@@ -40,13 +53,17 @@
       padding: 2rem 1rem;
       z-index: 998;
     }
-    #sidebar.open { right: 0; }
+    #sidebar.open {
+      right: 0;
+    }
     #sidebar ul {
       list-style: none;
       padding: 0;
       margin: 0;
     }
-    #sidebar ul li { margin: 1rem 0; }
+    #sidebar ul li {
+      margin: 1rem 0;
+    }
     #sidebar ul li a {
       display: flex;
       align-items: center;
@@ -62,6 +79,7 @@
       background-color: #111111;
       color: #00ffaa;
     }
+
     .avatar {
       width: 150px;
       height: 150px;
@@ -71,6 +89,7 @@
       margin: 30px auto 0;
       display: block;
     }
+
     .typing-box {
       font-size: 2rem;
       display: flex;
@@ -78,6 +97,7 @@
       justify-content: center;
       margin-top: 1rem;
     }
+
     .cursor {
       display: inline-block;
       width: 10px;
@@ -86,10 +106,12 @@
       background-color: #58a6ff;
       animation: blink 0.8s infinite;
     }
+
     @keyframes blink {
       0%, 50% { opacity: 1; }
       50.1%, 100% { opacity: 0; }
     }
+
     #about {
       background-color: rgba(28, 28, 28, 0.6);
       backdrop-filter: blur(10px);
@@ -99,14 +121,17 @@
       max-width: 800px;
       box-shadow: 0 0 20px rgba(0, 255, 150, 0.1);
     }
+
     #about h2 {
       color: #58a6ff;
       font-size: 2rem;
     }
+
     #about p {
       font-size: 1.1rem;
       line-height: 1.8;
     }
+
     .hacker-img {
       max-width: 100%;
       width: 300px;
@@ -117,137 +142,155 @@
       margin-left: auto;
       margin-right: auto;
     }
+
     .contact {
       padding: 2rem;
       text-align: center;
     }
+
     .contact h1 {
       color: #58a6ff;
       font-size: 2rem;
       margin-top: 3rem;
     }
+
     .contact p a {
       margin: 0.5rem;
       display: inline-block;
     }
+
     footer {
-      background: #0a0a0a;
-      color: #888;
       text-align: center;
-      padding: 1rem 0;
+      padding: 1rem;
+      color: #888;
       font-size: 0.9rem;
-      border-top: 1px solid #222;
+      margin-top: 3rem;
     }
-  </style>  
-</head>  
-<body>  
-  <div id="menu-toggle">  
-    <div></div>  
-    <div></div>  
-    <div></div>  
-  </div>  
+  </style>
+</head>
+<body>
+  <div id="menu-toggle">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
 
-  <nav id="sidebar">  
-    <ul>  
-      <li><a href="#home">🏠 Home</a></li>  
-      <li><a href="#about">👤 About</a></li>  
-      <li><a href="#contact">📞 Contact</a></li>  
-    </ul>  
-  </nav>  
+  <nav id="sidebar">
+    <ul>
+      <li><a href="#home">🏠 Home</a></li>
+      <li><a href="#about">👤 About</a></li>
+      <li><a href="#contact">📞 Contact</a></li>
+    </ul>
+  </nav>
 
-  <div id="home">  
-    <img class="avatar" src="your-selfie.jpg" alt="Panda">  
-    <div class="typing-box">  
-      <span id="typed-text"></span><span class="cursor"></span>  
-    </div>  
-  </div>  
+  <div id="home">
+    <img class="avatar" src="your-selfie.jpg" alt="Panda">
+    <div class="typing-box">
+      <span id="typed-text"></span><span class="cursor"></span>
+    </div>
+  </div>
 
-  <section id="about">  
-    <h2>About Me</h2>  
-    <p>  
-      Hello! I'm <strong style="color:#00ffaa">Panda</strong> (Rohith Abhi) — a self-taught ethical hacker with a deep passion for cybersecurity and digital safety.<br><br>  
-      I specialize in uncovering vulnerabilities, ethically exploiting systems, and helping organizations strengthen their defenses.<br><br>  
-      I'm also expanding my skill set by learning programming languages like <strong style="color:#ff79c6">Rust</strong>, <strong style="color:#bd93f9">Haskell</strong>, <strong style="color:#8be9fd">C++</strong>, and <strong style="color:#50fa7b">Prolog</strong>.  
-    </p>  
-    <img class="hacker-img" src="your-hacker-mask.jpg" alt="Hacker Panda with Mask">  
-  </section>  
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      Hello! I'm <strong style="color:#00ffaa">Panda</strong> (Rohith Abhi) — a self-taught ethical hacker with a deep passion for cybersecurity and digital safety.<br><br>
+      I specialize in uncovering vulnerabilities, ethically exploiting systems, and helping organizations strengthen their defenses.<br><br>
+      I'm also expanding my skill set by learning programming languages like <strong style="color:#ff79c6">Rust</strong>, <strong style="color:#bd93f9">Haskell</strong>, <strong style="color:#8be9fd">C++</strong>, and <strong style="color:#50fa7b">Prolog</strong>.
+    </p>
+    <img class="hacker-img" src="your-hacker-mask.jpg" alt="Hacker Panda with Mask">
+  </section>
 
-  <div class="contact" id="contact">  
-    <h1><b>Contact Me</b></h1>  
-    <p>  
-      <a href="mailto:ahanrohith123@gmail.com">  
-        <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" />  
-      </a>  
-      <a href="https://www.instagram.com/rohith__abhi">  
-        <img src="https://img.shields.io/badge/Instagram-E75480?style=for-the-badge&logo=instagram&logoColor=white" />  
-      </a>  
-      <a href="https://wa.me/919946605328">  
-        <img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" />  
-      </a>  
-    </p>  
-  </div>  
+  <div class="contact" id="contact">
+    <h1><b>Contact Me</b></h1>
+    <p>
+      <a href="mailto:ahanrohith123@gmail.com">
+        <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
+      </a>
+      <a href="https://www.instagram.com/rohith__abhi">
+        <img src="https://img.shields.io/badge/Instagram-E75480?style=for-the-badge&logo=instagram&logoColor=white" />
+      </a>
+      <a href="https://wa.me/919946605328">
+        <img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" />
+      </a>
+    </p>
+  </div>
 
   <footer>
     &copy; 2025 Panda (Rohith Abhi). All rights reserved.
   </footer>
 
-  <script>  
-    const names = ["Panda🐼", "P4nda", "P4NDA", "PΛИDΛ", "𝙿𝙰𝙽𝙳𝙰", "ＰＡＮＤＡ", "P.a.n.d.a"];  
-    const textEl = document.getElementById("typed-text");  
-    let nameIndex = 0, charIndex = 0, isDeleting = false, delayBeforeTyping = true;
+  <script>
+    const names = [
+      "Panda🐼",
+      "P4nda",
+      "P4NDA",
+      "PΛИDΛ",
+      "𝙿𝙰𝙽𝙳𝙰",
+      "ＰＡＮＤＡ",
+      "P.a.n.d.a"
+    ];
 
-    function typeEffect() {  
-      const currentName = names[nameIndex];  
+    const textEl = document.getElementById("typed-text");
+    let nameIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let delayBeforeTyping = true;
 
-      if (delayBeforeTyping) {  
-        delayBeforeTyping = false;  
-        setTimeout(typeEffect, 800);  
-        return;  
-      }  
+    function typeEffect() {
+      const currentName = names[nameIndex];
 
-      if (isDeleting) {  
-        charIndex--;  
-        textEl.textContent = currentName.substring(0, charIndex);  
-        if (charIndex === 0) {  
-          isDeleting = false;  
-          nameIndex = (nameIndex + 1) % names.length;  
-          delayBeforeTyping = true;  
-          setTimeout(typeEffect, 300);  
-        } else {  
-          setTimeout(typeEffect, 50);  
-        }  
-      } else {  
-        charIndex++;  
-        textEl.textContent = currentName.substring(0, charIndex);  
-        if (charIndex === currentName.length) {  
-          isDeleting = true;  
-          setTimeout(typeEffect, 1200);  
-        } else {  
-          setTimeout(typeEffect, 120);  
-        }  
-      }  
-    }  
+      if (delayBeforeTyping) {
+        delayBeforeTyping = false;
+        setTimeout(typeEffect, 800);
+        return;
+      }
 
-    typeEffect();  
+      if (isDeleting) {
+        charIndex--;
+        textEl.textContent = currentName.substring(0, charIndex);
+        if (charIndex === 0) {
+          isDeleting = false;
+          nameIndex = (nameIndex + 1) % names.length;
+          delayBeforeTyping = true;
+          setTimeout(typeEffect, 300);
+        } else {
+          setTimeout(typeEffect, 50);
+        }
+      } else {
+        charIndex++;
+        textEl.textContent = currentName.substring(0, charIndex);
+        if (charIndex === currentName.length) {
+          isDeleting = true;
+          setTimeout(typeEffect, 1200);
+        } else {
+          setTimeout(typeEffect, 120);
+        }
+      }
+    }
 
-    const sidebar = document.getElementById("sidebar");  
-    const toggle = document.getElementById("menu-toggle");  
+    typeEffect();
 
-    toggle.addEventListener("click", () => {  
-      sidebar.classList.toggle("open");  
-    });  
+    const sidebar = document.getElementById("sidebar");
+    const toggle = document.getElementById("menu-toggle");
 
-    document.addEventListener("click", function (e) {  
-      if (!sidebar.contains(e.target) && !toggle.contains(e.target)) {  
-        sidebar.classList.remove("open");  
-      }  
-    });  
+    toggle.addEventListener("click", () => {
+      sidebar.classList.toggle("open");
+      toggle.classList.toggle("open");
+    });
 
-    document.querySelectorAll("#sidebar a").forEach(link => {  
-      link.addEventListener("click", () => {  
-        sidebar.classList.remove("open");  
-      });  
-    });  
-  </script>  
-</body>  
+    document.addEventListener("click", function (e) {
+      if (!sidebar.contains(e.target) && !toggle.contains(e.target)) {
+        sidebar.classList.remove("open");
+        toggle.classList.remove("open");
+      }
+    });
+
+    document.querySelectorAll("#sidebar a").forEach(link => {
+      link.addEventListener("click", () => {
+        sidebar.classList.remove("open");
+        toggle.classList.remove("open");
+      });
+    });
+  </script>
+</body>
 </html>

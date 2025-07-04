@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Panda - Ethical Hacker</title>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet" />
   <style>
     html {
       scroll-behavior: smooth;
@@ -14,120 +15,121 @@
     body {
       margin: 0;
       font-family: 'Fira Code', monospace;
-      color: #ffffff;
-      background: #000;
+      color: #e0e0e0;
+      background: linear-gradient(to bottom right, #0f0c29, #302b63, #24243e);
       overflow-x: hidden;
     }
 
-    /* Loading screen */
-    #loader {
-      position: fixed;
-      z-index: 9999;
-      background: #000;
-      height: 100%;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 0.5s ease;
-    }
-
-    .loading-button {
-      font-size: 1.5rem;
-      padding: 1rem 2rem;
-      color: #0ff;
-      background: transparent;
-      border: 2px solid #0ff;
-      border-radius: 10px;
-      animation: pulse 1.5s infinite;
-    }
-
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(0,255,255, 0.4); }
-      70% { box-shadow: 0 0 0 20px rgba(0,255,255, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(0,255,255, 0); }
-    }
-
-    /* Particle background */
     #particles-js {
       position: fixed;
       width: 100%;
       height: 100%;
       z-index: -1;
-      background: radial-gradient(circle at top left, #2c0049, #0e002d 60%, #000 100%);
+      background: linear-gradient(to bottom right, #000000, #0c0032, #1f0037);
     }
 
-    /* Glassmorphism panel */
     .glass-panel {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border-radius: 16px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       padding: 2rem;
-      box-shadow: 0 0 40px rgba(173, 255, 255, 0.2);
+      box-shadow: 0 0 40px rgba(0, 255, 255, 0.1);
       margin: 2rem auto;
       max-width: 800px;
     }
 
     .neon-text {
-      color: #00f0ff;
-      text-shadow: 0 0 5px #00f0ff, 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+      color: #00ffe0;
+      text-shadow: 0 0 5px #00ffe0, 0 0 10px #00ffe0, 0 0 20px #00ffe0;
     }
 
     a.neon-btn {
       display: inline-block;
       padding: 12px 24px;
-      border: 2px solid #9333ea;
+      border: 2px solid #00ffe0;
       border-radius: 8px;
       background-color: transparent;
-      color: #9333ea;
+      color: #00ffe0;
       font-weight: bold;
       transition: all 0.3s ease-in-out;
       text-decoration: none;
     }
 
     a.neon-btn:hover {
-      background-color: #9333ea;
+      background-color: #00ffe0;
       color: #000;
-      box-shadow: 0 0 10px #9333ea, 0 0 40px #9333ea;
+      box-shadow: 0 0 10px #00ffe0, 0 0 40px #00ffe0;
     }
 
     .avatar {
-      border: 3px solid #00ffaa;
-      box-shadow: 0 0 20px #00ffaa;
+      border: 3px solid #00ffe0;
+      box-shadow: 0 0 20px #00ffe0;
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      margin-top: 2rem;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .hacker-img {
-      box-shadow: 0 0 20px #00ffaa;
+      max-width: 100%;
+      margin-top: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 30px #00ffe0;
     }
 
-    /* Sidebar toggle styling */
+    .typing-box {
+      text-align: center;
+      font-size: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1.2em;
+      background: #00ffe0;
+      margin-left: 4px;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
     #menu-toggle {
       position: fixed;
-      top: 1rem;
-      left: 1rem;
+      top: 20px;
+      left: 20px;
       cursor: pointer;
       z-index: 999;
     }
 
-    .bar1, .bar2, .bar3 {
-      width: 25px;
-      height: 3px;
-      background-color: #fff;
-      margin: 5px 0;
+    #menu-toggle div {
+      width: 30px;
+      height: 4px;
+      background-color: #00ffe0;
+      margin: 6px 0;
       transition: 0.4s;
     }
 
     #sidebar {
       position: fixed;
       top: 0;
-      left: -200px;
+      left: -250px;
       height: 100%;
-      width: 200px;
-      background-color: rgba(0,0,0,0.8);
+      width: 250px;
+      background-color: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(10px);
       padding-top: 60px;
-      transition: left 0.3s ease;
+      transition: 0.3s;
+      z-index: 998;
     }
 
     #sidebar.open {
@@ -135,37 +137,45 @@
     }
 
     #sidebar ul {
-      list-style: none;
+      list-style-type: none;
       padding: 0;
     }
 
-    #sidebar li {
-      padding: 15px;
+    #sidebar ul li {
+      padding: 16px;
+      text-align: center;
     }
 
-    #sidebar a {
-      color: #00f0ff;
+    #sidebar ul li a {
+      color: #00ffe0;
       text-decoration: none;
+      font-size: 1.2rem;
+      transition: 0.3s;
     }
 
+    #sidebar ul li a:hover {
+      color: #ffffff;
+      text-shadow: 0 0 10px #00ffe0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
   </style>
 </head>
+
 <body>
-
-  <!-- Loader -->
-  <div id="loader">
-    <div class="loading-button">Loading...</div>
-  </div>
-
-  <!-- Particle Background -->
   <div id="particles-js"></div>
 
-  <!-- Sidebar Navigation -->
   <div id="menu-toggle">
     <div class="bar1"></div>
     <div class="bar2"></div>
     <div class="bar3"></div>
   </div>
+
   <nav id="sidebar">
     <ul>
       <li><a href="#home">Home</a></li>
@@ -174,19 +184,17 @@
     </ul>
   </nav>
 
-  <!-- Home Section -->
   <section id="home">
     <img class="avatar" src="your-selfie.jpg" alt="Panda" />
     <div class="typing-box">
       <span id="typed-text" class="neon-text"></span><span class="cursor"></span>
     </div>
     <div style="text-align: center; margin-top: 1.5rem;">
-      <p style="font-size: 1.5rem; color: #00ffaa; margin: 0;">Hi There! 👋🏻</p>
+      <p style="font-size: 1.5rem; color: #00ffe0; margin: 0;">Hi There! 👋🏻</p>
       <p style="font-size: 2rem; font-weight: bold; color: #c084fc; margin: 0;">I'M PANDA</p>
     </div>
   </section>
 
-  <!-- About Section -->
   <section id="about" class="glass-panel">
     <h2 class="neon-text">About Me</h2>
     <p>
@@ -197,7 +205,6 @@
     <img class="hacker-img" src="your-hacker-mask.jpg" alt="Hacker Panda with Mask">
   </section>
 
-  <!-- Contact Section -->
   <div class="contact glass-panel" id="contact">
     <h1 class="neon-text">Contact Me</h1>
     <p>
@@ -213,19 +220,15 @@
     </p>
   </div>
 
-  <!-- Footer -->
   <footer>
     Designed and Developed by Panda<br>
     Copyright © 2025 rohithabhi
   </footer>
 
-  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
   <script>
-    // Load particle background
     particlesJS.load('particles-js', 'https://raw.githubusercontent.com/VincentGarreau/particles.js/master/demo/particles.json');
 
-    // Typing animation
     const names = ["Panda", "P4nda", "PΛИDΛ", "𝙿𝙰𝙽𝙳𝙰", "ＰＡＮＤＡ"];
     const textEl = document.getElementById("typed-text");
     let nameIndex = 0, charIndex = 0, isDeleting = false, delayBeforeTyping = true;
@@ -237,6 +240,7 @@
         setTimeout(typeEffect, 800);
         return;
       }
+
       if (isDeleting) {
         charIndex--;
         textEl.textContent = currentName.substring(0, charIndex);
@@ -262,7 +266,6 @@
 
     typeEffect();
 
-    // Sidebar toggle
     const sidebar = document.getElementById("sidebar");
     const toggle = document.getElementById("menu-toggle");
 
@@ -284,14 +287,7 @@
         toggle.classList.remove("open");
       }
     });
-
-    // Hide loader on page load
-    window.addEventListener("load", function () {
-      const loader = document.getElementById("loader");
-      loader.style.opacity = 0;
-      setTimeout(() => loader.style.display = "none", 500);
-    });
   </script>
-
 </body>
+
 </html>

@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -9,212 +8,217 @@
     html {
       scroll-behavior: smooth;
       scroll-padding-top: 60px;
-    }
+    }body {
+  margin: 0;
+  font-family: 'Fira Code', monospace;
+  color: #ffffff;
+  background: radial-gradient(circle at top left, #2c0049, #0e002d 60%, #000 100%);
+  background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+  background-repeat: repeat;
+  background-size: contain;
+  background-attachment: fixed;
+  overflow-x: hidden;
+  position: relative;
+}
 
-    body {
-      background: linear-gradient(to bottom, #000011 0%, #000022 50%, #000011 100%), 
-                  url('starry-bg.png') no-repeat center center fixed;
-      background-size: cover;
-      color: #00ffcc;
-      font-family: 'Fira Code', monospace;
-      margin: 0;
-      overflow-x: hidden;
-    }
+body::before {
+  content: '';
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: transparent url('https://i.ibb.co/9ZfJ9Z2/stars-bg.png') repeat;
+  animation: starTwinkle 2s infinite ease-in-out;
+  z-index: -1;
+  opacity: 0.3;
+}
 
-    #menu-toggle {
-      position: fixed;
-      top: 40px;
-      right: 20px;
-      cursor: pointer;
-      z-index: 999;
-      width: 35px;
-      height: 30px;
-    }
+@keyframes starTwinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
 
-    #menu-toggle div {
-      width: 100%;
-      height: 4px;
-      background: #00ffaa;
-      margin: 6px 0;
-      transition: 0.4s;
-      border-radius: 2px;
-    }
+#menu-toggle {
+  position: fixed;
+  top: 40px;
+  right: 20px;
+  cursor: pointer;
+  z-index: 999;
+  width: 35px;
+  height: 30px;
+}
 
-    #menu-toggle.open .bar1 {
-      transform: rotate(45deg) translate(5px, 5px);
-    }
+#menu-toggle div {
+  width: 100%;
+  height: 4px;
+  background: #00ffaa;
+  margin: 6px 0;
+  transition: 0.4s;
+  border-radius: 2px;
+}
 
-    #menu-toggle.open .bar2 {
-      opacity: 0;
-    }
+#menu-toggle.open .bar1 {
+  transform: rotate(45deg) translate(5px, 5px);
+}
 
-    #menu-toggle.open .bar3 {
-      transform: rotate(-45deg) translate(7px, -7px);
-    }
+#menu-toggle.open .bar2 {
+  opacity: 0;
+}
 
-    #sidebar {
-      position: fixed;
-      top: -100%;
-      left: 0;
-      width: 100%;
-      max-height: 80vh;
-      background-color: #0d0d0d;
-      overflow-y: auto;
-      box-shadow: 0 4px 15px rgba(0, 255, 150, 0.2);
-      transition: top 0.4s ease;
-      padding: 2rem 1rem;
-      z-index: 998;
-    }
+#menu-toggle.open .bar3 {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
 
-    #sidebar.open {
-      top: 0;
-    }
+#sidebar {
+  position: fixed;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  max-height: 80vh;
+  background-color: #0d0d0d;
+  overflow-y: auto;
+  box-shadow: 0 4px 15px rgba(0, 255, 150, 0.2);
+  transition: top 0.4s ease;
+  padding: 2rem 1rem;
+  z-index: 998;
+}
 
-    #sidebar ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
+#sidebar.open {
+  top: 0;
+}
 
-    #sidebar ul li {
-      margin: 1rem 0;
-    }
+#sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 
-    #sidebar ul li a {
-      display: block;
-      padding: 12px 20px;
-      color: #00ffcc;
-      text-decoration: none;
-      font-size: 1.2rem;
-      border-radius: 8px;
-      transition: background 0.2s ease;
-    }
+#sidebar ul li {
+  margin: 1rem 0;
+}
 
-    #sidebar ul li a:hover {
-      background-color: #111111;
-      color: #00ffaa;
-    }
+#sidebar ul li a {
+  display: block;
+  padding: 12px 20px;
+  color: #00ffcc;
+  text-decoration: none;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
 
-    .avatar {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      border: 3px solid #58a6ff;
-      object-fit: cover;
-      margin: 30px auto 0;
-      display: block;
-    }
+#sidebar ul li a:hover {
+  background-color: #111111;
+  color: #00ffaa;
+}
 
-    .typing-box {
-      font-size: 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 1rem;
-    }
+.avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 3px solid #58a6ff;
+  object-fit: cover;
+  margin: 30px auto 0;
+  display: block;
+}
 
-    .cursor {
-      display: inline-block;
-      width: 10px;
-      height: 1.5rem;
-      margin-left: 5px;
-      background-color: #58a6ff;
-      animation: blink 0.8s infinite;
-    }
+.typing-box {
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+}
 
-    @keyframes blink {
-      0%, 50% { opacity: 1; }
-      50.1%, 100% { opacity: 0; }
-    }
+.cursor {
+  display: inline-block;
+  width: 10px;
+  height: 1.5rem;
+  margin-left: 5px;
+  background-color: #58a6ff;
+  animation: blink 0.8s infinite;
+}
 
-    #about {
-      background-color: rgba(28, 28, 28, 0.6);
-      backdrop-filter: blur(10px);
-      padding: 2rem;
-      border-radius: 12px;
-      margin: 2rem auto;
-      max-width: 800px;
-      box-shadow: 0 0 20px rgba(0, 255, 150, 0.1);
-    }
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  50.1%, 100% { opacity: 0; }
+}
 
-    #about h2 {
-      color: #58a6ff;
-      font-size: 2rem;
-    }
+#about {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 12px;
+  margin: 2rem auto;
+  max-width: 800px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
 
-    #about p {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      color: #ccc;
-    }
+#about h2 {
+  color: #c084fc;
+  font-size: 2rem;
+}
 
-    .hacker-img {
-      max-width: 100%;
-      width: 300px;
-      margin-top: 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0,255,150,0.2);
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
+#about p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #e0e0e0;
+}
 
-    .contact {
-      padding: 2rem;
-      text-align: center;
-    }
+.hacker-img {
+  max-width: 100%;
+  width: 300px;
+  margin-top: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,255,150,0.2);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-    .contact h1 {
-      color: #58a6ff;
-      font-size: 2rem;
-      margin-top: 3rem;
-    }
+.contact {
+  padding: 2rem;
+  text-align: center;
+}
 
-    .contact p a {
-      margin: 0.5rem;
-      display: inline-block;
-    }
+.contact h1 {
+  color: #c084fc;
+  font-size: 2rem;
+  margin-top: 3rem;
+}
 
-    footer {
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-      color: #777;
-    }
+.contact p a {
+  margin: 0.5rem;
+  display: inline-block;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: #777;
+}
+
   </style>
 </head>
-<body>
-
-  <!-- Toggle Button -->
-  <div id="menu-toggle">
+<body>  <!-- Toggle Button -->  <div id="menu-toggle">
     <div class="bar1"></div>
     <div class="bar2"></div>
     <div class="bar3"></div>
-  </div>
-
-  <!-- Sidebar -->
-  <nav id="sidebar">
+  </div>  <!-- Sidebar -->  <nav id="sidebar">
     <ul>
       <li><a href="#home">Home</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-  </nav>
-
-  <!-- Home Section -->
-  <section id="home">
+  </nav>  <!-- Home Section -->  <section id="home">
     <img class="avatar" src="your-selfie.jpg" alt="Panda" />
     <div class="typing-box">
       <span id="typed-text"></span><span class="cursor"></span>
     </div>
     <div style="text-align: center; margin-top: 1.5rem;">
       <p style="font-size: 1.5rem; color: #00ffaa; margin: 0;">Hi There! 👋🏻</p>
-      <p style="font-size: 2rem; font-weight: bold; color: #58a6ff; margin: 0;">I'M PANDA</p>
+      <p style="font-size: 2rem; font-weight: bold; color: #c084fc; margin: 0;">I'M PANDA</p>
     </div>
-  </section>
-
-  <!-- About Section -->
-  <section id="about">
+  </section>  <!-- About Section -->  <section id="about">
     <h2>About Me</h2>
     <p>
       Hello! I'm Panda (Rohith Abhi), a self-taught ethical hacker passionate about cybersecurity.<br><br>
@@ -222,10 +226,7 @@
       I'm also learning Rust, Haskell, C++, and Prolog.
     </p>
     <img class="hacker-img" src="your-hacker-mask.jpg" alt="Hacker Panda with Mask">
-  </section>
-
-  <!-- Contact Section -->
-  <div class="contact" id="contact">
+  </section>  <!-- Contact Section -->  <div class="contact" id="contact">
     <h1>Contact Me</h1>
     <p>
       <a href="mailto:ahanrohith123@gmail.com">
@@ -238,16 +239,10 @@
         <img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" />
       </a>
     </p>
-  </div>
-
-  <!-- Footer -->
-  <footer>
+  </div>  <!-- Footer -->  <footer>
     Designed and Developed by Panda<br>
     Copyright © 2025 rohithabhi
-  </footer>
-
-  <!-- Script -->
-  <script>
+  </footer>  <!-- Script -->  <script>
     const names = ["Panda", "P4nda", "PΛИDΛ", "𝙿𝙰𝙽𝙳𝙰", "ＰＡＮＤＡ"];
     const textEl = document.getElementById("typed-text");
     let nameIndex = 0, charIndex = 0, isDeleting = false, delayBeforeTyping = true;
@@ -305,6 +300,5 @@
         toggle.classList.remove("open");
       }
     });
-  </script>
-</body>
+  </script></body>
 </html>

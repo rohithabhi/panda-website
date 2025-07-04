@@ -1,278 +1,309 @@
-<!DOCTYPE html>  <html lang="en">    <head>    
-  <meta charset="UTF-8">    
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">    
-  <title>Panda - Ethical Hacker</title>    
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">    
-  <style>    
-    html {    
-      scroll-behavior: smooth;    
-      scroll-padding-top: 60px;    
-    }  body {    
-  background: linear-gradient(135deg, #0a0a0a, #111111, #1a1a1a, #111111, #0a0a0a);    
-  color: #00ffcc;    
-  font-family: 'Fira Code', monospace;    
-  margin: 0;    
-  overflow-x: hidden;    
-}    #menu-toggle {
-position: fixed;
-top: 20px;
-right: 20px;
-cursor: pointer;
-z-index: 999;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Panda - Ethical Hacker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet"/>
+  <style>
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 60px;
+    }
 
-#menu-toggle div {
-width: 30px;
-height: 4px;
-background: #00ffaa;
-margin: 6px 0;
-transition: 0.3s ease;
-}
+    body {
+      background: url('starry-bg.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #00ffcc;
+      font-family: 'Fira Code', monospace;
+      margin: 0;
+      overflow-x: hidden;
+    }
 
-#sidebar {
-position: fixed;
-top: 0;
-right: -260px;
-height: 100%;
-width: 260px;
-background-color: #0d0d0d;
-box-shadow: -2px 0 15px rgba(0, 255, 150, 0.2);
-transition: right 0.4s ease;
-padding: 2rem 1rem;
-z-index: 998;
-}
+    #menu-toggle {
+      position: fixed;
+      top: 40px;
+      right: 20px;
+      cursor: pointer;
+      z-index: 999;
+      width: 35px;
+      height: 30px;
+    }
 
-#sidebar.open {
-right: 0;
-}
+    #menu-toggle div {
+      width: 100%;
+      height: 4px;
+      background: #00ffaa;
+      margin: 6px 0;
+      transition: 0.4s;
+      border-radius: 2px;
+    }
 
-#sidebar ul {
-list-style: none;
-padding: 0;
-margin: 0;
-}
+    #menu-toggle.open .bar1 {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
 
-#sidebar ul li {
-margin: 1rem 0;
-}
+    #menu-toggle.open .bar2 {
+      opacity: 0;
+    }
 
-#sidebar ul li a {
-display: flex;
-align-items: center;
-gap: 10px;
-padding: 12px 20px;
-color: #00ffcc;
-text-decoration: none;
-font-size: 1.2rem;
-border-radius: 8px;
-transition: background 0.2s ease;
-}
+    #menu-toggle.open .bar3 {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
 
-#sidebar ul li a:hover {
-background-color: #111111;
-color: #00ffaa;
-}
+    #sidebar {
+      position: fixed;
+      top: -100%;
+      left: 0;
+      width: 100%;
+      max-height: 80vh;
+      background-color: #0d0d0d;
+      overflow-y: auto;
+      box-shadow: 0 4px 15px rgba(0, 255, 150, 0.2);
+      transition: top 0.4s ease;
+      padding: 2rem 1rem;
+      z-index: 998;
+    }
 
-.avatar {
-width: 150px;
-height: 150px;
-border-radius: 50%;
-border: 3px solid #58a6ff;
-object-fit: cover;
-margin: 30px auto 0;
-display: block;
-}
+    #sidebar.open {
+      top: 0;
+    }
 
-.typing-box {
-font-size: 2rem;
-display: flex;
-align-items: center;
-justify-content: center;
-margin-top: 1rem;
-}
+    #sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
 
-.cursor {
-display: inline-block;
-width: 10px;
-height: 1.5rem;
-margin-left: 5px;
-background-color: #58a6ff;
-animation: blink 0.8s infinite;
-}
+    #sidebar ul li {
+      margin: 1rem 0;
+    }
 
-@keyframes blink {
-0%, 50% { opacity: 1; }
-50.1%, 100% { opacity: 0; }
-}
+    #sidebar ul li a {
+      display: block;
+      padding: 12px 20px;
+      color: #00ffcc;
+      text-decoration: none;
+      font-size: 1.2rem;
+      border-radius: 8px;
+      transition: background 0.2s ease;
+    }
 
-#about {
-background-color: rgba(28, 28, 28, 0.6);
-backdrop-filter: blur(10px);
-padding: 2rem;
-border-radius: 12px;
-margin: 2rem auto;
-max-width: 800px;
-box-shadow: 0 0 20px rgba(0, 255, 150, 0.1);
-}
+    #sidebar ul li a:hover {
+      background-color: #111111;
+      color: #00ffaa;
+    }
 
-#about h2 {
-color: #58a6ff;
-font-size: 2rem;
-}
+    .avatar {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 3px solid #58a6ff;
+      object-fit: cover;
+      margin: 30px auto 0;
+      display: block;
+    }
 
-#about p {
-font-size: 1.1rem;
-line-height: 1.8;
-color: #ccc;
-}
+    .typing-box {
+      font-size: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1rem;
+    }
 
-.hacker-img {
-max-width: 100%;
-width: 300px;
-margin-top: 30px;
-border-radius: 12px;
-box-shadow: 0 0 20px rgba(0,255,150,0.2);
-display: block;
-margin-left: auto;
-margin-right: auto;
-}
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      height: 1.5rem;
+      margin-left: 5px;
+      background-color: #58a6ff;
+      animation: blink 0.8s infinite;
+    }
 
-.contact {
-padding: 2rem;
-text-align: center;
-}
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      50.1%, 100% { opacity: 0; }
+    }
 
-.contact h1 {
-color: #58a6ff;
-font-size: 2rem;
-margin-top: 3rem;
-}
+    #about {
+      background-color: rgba(28, 28, 28, 0.6);
+      backdrop-filter: blur(10px);
+      padding: 2rem;
+      border-radius: 12px;
+      margin: 2rem auto;
+      max-width: 800px;
+      box-shadow: 0 0 20px rgba(0, 255, 150, 0.1);
+    }
 
-.contact p a {
-margin: 0.5rem;
-display: inline-block;
-}
+    #about h2 {
+      color: #58a6ff;
+      font-size: 2rem;
+    }
 
-footer {
-text-align: center;
-padding: 1rem;
-font-size: 0.9rem;
-color: #777;
-}
+    #about p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #ccc;
+    }
 
-  </style>    
-</head>    
-<body>    <div id="menu-toggle">    
-    <div></div>    
-    <div></div>    
-    <div></div>    
-  </div>    <nav id="sidebar">    
-    <ul>    
-      <li><a href="#home">Home</a></li>    
-      <li><a href="#about">About</a></li>    
-      <li><a href="#contact">Contact</a></li>    
-    </ul>    
-  </nav>    <div id="home">    
-    <img class="avatar" src="your-selfie.jpg" alt="Panda">    
-    <div class="typing-box">    
-      <span id="typed-text"></span><span class="cursor"></span>    
-    </div>    
-  </div>    <section id="about">    
-    <h2>About Me</h2>    
-<div id="home" class="content">    
-  <img class="avatar" src="your-selfie.jpg" alt="Panda" />    <!-- Greeting Only (No Typing Effect) -->    <div style="text-align: center; margin-top: 1.5rem;">    
-    <p style="font-size: 1.5rem; color: #00ffaa; margin: 0;">Hi There! 👋🏻</p>    
-    <p style="font-size: 2rem; font-weight: bold; color: #58a6ff; margin: 0;">I'M PANDA</p>    
-  </div>    
-</div>    
-    <p>    
-      Hello! I'm Panda (Rohith Abhi), a self-taught ethical hacker with a deep passion for cybersecurity and digital safety.<br><br>    
-      I specialize in uncovering vulnerabilities, ethically exploiting systems, and helping organizations strengthen their defenses.<br><br>    
-      I'm also expanding my skills by learning programming languages like Rust, Haskell, C++, and Prolog.    
-    </p>    
-    <img class="hacker-img" src="your-hacker-mask.jpg" alt="Hacker Panda with Mask">    
-  </section>    <div class="contact" id="contact">    
-    <h1>Contact Me</h1>    
-    <p>    
-      <a href="mailto:ahanrohith123@gmail.com">    
-        <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" />    
-      </a>    
-      <a href="https://www.instagram.com/rohith__abhi">    
-        <img src="https://img.shields.io/badge/Instagram-E75480?style=for-the-badge&logo=instagram&logoColor=white" />    
-      </a>    
-      <a href="https://wa.me/919946605328">    
-        <img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" />    
-      </a>    
-    </p>    
-  </div>    <footer>    
-    Designed and Developed by Panda<br>    
-    Copyright © 2025 rohithabhi    
-  </footer>    <script>    
-    const names = [    
-      "Panda",    
-      "P4nda",    
-      "PΛИDΛ",    
-      "𝙿𝙰𝙽𝙳𝙰",    
-      "ＰＡＮＤＡ"    
-    ];    const textEl = document.getElementById("typed-text");    
-let nameIndex = 0;    
-let charIndex = 0;    
-let isDeleting = false;    
-let delayBeforeTyping = true;    
+    .hacker-img {
+      max-width: 100%;
+      width: 300px;
+      margin-top: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,255,150,0.2);
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
 
-function typeEffect() {    
-  const currentName = names[nameIndex];    
+    .contact {
+      padding: 2rem;
+      text-align: center;
+    }
 
-  if (delayBeforeTyping) {    
-    delayBeforeTyping = false;    
-    setTimeout(typeEffect, 800);    
-    return;    
-  }    
+    .contact h1 {
+      color: #58a6ff;
+      font-size: 2rem;
+      margin-top: 3rem;
+    }
 
-  if (isDeleting) {    
-    charIndex--;    
-    textEl.textContent = currentName.substring(0, charIndex);    
-    if (charIndex === 0) {    
-      isDeleting = false;    
-      nameIndex = (nameIndex + 1) % names.length;    
-      delayBeforeTyping = true;    
-      setTimeout(typeEffect, 300);    
-    } else {    
-      setTimeout(typeEffect, 50);    
-    }    
-  } else {    
-    charIndex++;    
-    textEl.textContent = currentName.substring(0, charIndex);    
-    if (charIndex === currentName.length) {    
-      isDeleting = true;    
-      setTimeout(typeEffect, 1200);    
-    } else {    
-      setTimeout(typeEffect, 120);    
-    }    
-  }    
-}    
+    .contact p a {
+      margin: 0.5rem;
+      display: inline-block;
+    }
 
-typeEffect();    
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
 
-const sidebar = document.getElementById("sidebar");    
-const toggle = document.getElementById("menu-toggle");    
+  <!-- Toggle Button -->
+  <div id="menu-toggle">
+    <div class="bar1"></div>
+    <div class="bar2"></div>
+    <div class="bar3"></div>
+  </div>
 
-toggle.addEventListener("click", () => {    
-  sidebar.classList.toggle("open");    
-});    
+  <!-- Sidebar -->
+  <nav id="sidebar">
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-document.addEventListener("click", function (e) {    
-  if (!sidebar.contains(e.target) && !toggle.contains(e.target)) {    
-    sidebar.classList.remove("open");    
-  }    
-});    
+  <!-- Home Section -->
+  <section id="home">
+    <img class="avatar" src="your-selfie.jpg" alt="Panda" />
+    <div class="typing-box">
+      <span id="typed-text"></span><span class="cursor"></span>
+    </div>
+    <div style="text-align: center; margin-top: 1.5rem;">
+      <p style="font-size: 1.5rem; color: #00ffaa; margin: 0;">Hi There! 👋🏻</p>
+      <p style="font-size: 2rem; font-weight: bold; color: #58a6ff; margin: 0;">I'M PANDA</p>
+    </div>
+  </section>
 
-document.querySelectorAll("#sidebar a").forEach(link => {    
-  link.addEventListener("click", () => {    
-    sidebar.classList.remove("open");    
-  });    
-});
+  <!-- About Section -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      Hello! I'm Panda (Rohith Abhi), a self-taught ethical hacker passionate about cybersecurity.<br><br>
+      I specialize in uncovering vulnerabilities, ethically exploiting systems, and helping organizations strengthen their defenses.<br><br>
+      I'm also learning Rust, Haskell, C++, and Prolog.
+    </p>
+    <img class="hacker-img" src="your-hacker-mask.jpg" alt="Hacker Panda with Mask">
+  </section>
 
-</script>  </body>
+  <!-- Contact Section -->
+  <div class="contact" id="contact">
+    <h1>Contact Me</h1>
+    <p>
+      <a href="mailto:ahanrohith123@gmail.com">
+        <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
+      </a>
+      <a href="https://www.instagram.com/rohith__abhi">
+        <img src="https://img.shields.io/badge/Instagram-E75480?style=for-the-badge&logo=instagram&logoColor=white" />
+      </a>
+      <a href="https://wa.me/919946605328">
+        <img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" />
+      </a>
+    </p>
+  </div>
 
+  <!-- Footer -->
+  <footer>
+    Designed and Developed by Panda<br>
+    Copyright © 2025 rohithabhi
+  </footer>
+
+  <!-- Script -->
+  <script>
+    const names = ["Panda", "P4nda", "PΛИDΛ", "𝙿𝙰𝙽𝙳𝙰", "ＰＡＮＤＡ"];
+    const textEl = document.getElementById("typed-text");
+    let nameIndex = 0, charIndex = 0, isDeleting = false, delayBeforeTyping = true;
+
+    function typeEffect() {
+      const currentName = names[nameIndex];
+      if (delayBeforeTyping) {
+        delayBeforeTyping = false;
+        setTimeout(typeEffect, 800);
+        return;
+      }
+      if (isDeleting) {
+        charIndex--;
+        textEl.textContent = currentName.substring(0, charIndex);
+        if (charIndex === 0) {
+          isDeleting = false;
+          nameIndex = (nameIndex + 1) % names.length;
+          delayBeforeTyping = true;
+          setTimeout(typeEffect, 300);
+        } else {
+          setTimeout(typeEffect, 50);
+        }
+      } else {
+        charIndex++;
+        textEl.textContent = currentName.substring(0, charIndex);
+        if (charIndex === currentName.length) {
+          isDeleting = true;
+          setTimeout(typeEffect, 1200);
+        } else {
+          setTimeout(typeEffect, 120);
+        }
+      }
+    }
+
+    typeEffect();
+
+    const sidebar = document.getElementById("sidebar");
+    const toggle = document.getElementById("menu-toggle");
+
+    toggle.addEventListener("click", () => {
+      sidebar.classList.toggle("open");
+      toggle.classList.toggle("open");
+    });
+
+    document.querySelectorAll("#sidebar a").forEach(link => {
+      link.addEventListener("click", () => {
+        sidebar.classList.remove("open");
+        toggle.classList.remove("open");
+      });
+    });
+
+    document.addEventListener("click", function (e) {
+      if (!sidebar.contains(e.target) && !toggle.contains(e.target)) {
+        sidebar.classList.remove("open");
+        toggle.classList.remove("open");
+      }
+    });
+  </script>
+</body>
 </html>

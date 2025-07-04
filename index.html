@@ -1,42 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>    
-  <meta charset="UTF-8" />    
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>    
-  <title>Panda - </title>    
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet"/>    
-  <style>    
-    html {    
-      scroll-behavior: smooth;    
-      scroll-padding-top: 60px;    
-    }    
-    body {    
-      margin: 0;    
-      font-family: 'Fira Code', monospace;    
-      color: #ffffff;    
-      background: #000;    
-      overflow-x: hidden;    
-    }    
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panda - Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <meta name="theme-color" content="#000000" />
 
-    #particles-js {    
-      position: fixed;    
-      width: 100%;    
-      height: 100%;    
-      z-index: -1;    
-      background: radial-gradient(circle at top left, #2c0049, #0e002d 60%, #000 100%);    
-    }    
+  <style>
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 60px;
+    }
 
-    .glass-panel {  
-      background: rgba(255, 255, 255, 0.05);  
-      backdrop-filter: blur(15px);  
-      -webkit-backdrop-filter: blur(15px);  
-      border-radius: 16px;  
-      border: 1px solid rgba(255, 255, 255, 0.1);  
-      padding: 2rem;  
-      box-shadow: 0 0 40px rgba(173, 255, 255, 0.2);  
-      margin: 2rem auto;  
-      max-width: 800px;  
-    }  
+    body {
+      margin: 0;
+      font-family: 'Fira Code', monospace;
+      color: #ffffff;
+      background: #000;
+      overflow-x: hidden;
+    }
+
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: radial-gradient(circle at top left, #2c0049, #0e002d 60%, #000 100%);
+    }
+
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(15px);
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      box-shadow: 0 0 40px rgba(173, 255, 255, 0.2);
+      margin: 2rem auto;
+      max-width: 800px;
+    }
 
     .neon-text {
       color: #00f0ff;
@@ -64,40 +67,73 @@
     .avatar {
       border: 3px solid #00ffaa;
       box-shadow: 0 0 20px #00ffaa;
+      border-radius: 50%;
+      width: 150px;
+      display: block;
+      margin: 2rem auto 1rem;
     }
 
     .hacker-img {
       box-shadow: 0 0 20px #00ffaa;
+      width: 100%;
+      border-radius: 12px;
+      margin-top: 1rem;
     }
 
-    /* Hamburger and Sidebar (for responsiveness) */
+    .typing-box {
+      text-align: center;
+      font-size: 2rem;
+      margin-top: 1rem;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1.2em;
+      background: #00f0ff;
+      margin-left: 4px;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.9rem;
+      color: #888;
+    }
+
     #menu-toggle {
       position: fixed;
-      top: 1rem;
-      left: 1rem;
+      top: 20px;
+      left: 20px;
       cursor: pointer;
       z-index: 999;
     }
 
-    .bar1, .bar2, .bar3 {
-      width: 25px;
-      height: 3px;
-      background-color: #fff;
+    #menu-toggle div {
+      width: 30px;
+      height: 4px;
+      background-color: #00f0ff;
       margin: 6px 0;
       transition: 0.4s;
     }
 
     #sidebar {
       position: fixed;
-      left: -200px;
       top: 0;
-      width: 200px;
+      left: -250px;
       height: 100%;
-      background: rgba(0, 0, 0, 0.8);
+      width: 250px;
+      background-color: rgba(0, 0, 0, 0.9);
       backdrop-filter: blur(10px);
+      padding-top: 60px;
       transition: 0.3s;
       z-index: 998;
-      padding-top: 60px;
     }
 
     #sidebar.open {
@@ -105,111 +141,138 @@
     }
 
     #sidebar ul {
-      list-style: none;
+      list-style-type: none;
       padding: 0;
     }
 
-    #sidebar li {
-      padding: 1rem;
+    #sidebar ul li {
+      padding: 16px;
+      text-align: center;
     }
 
-    #sidebar a {
-      color: #00ffaa;
+    #sidebar ul li a {
+      color: #00ffe0;
       text-decoration: none;
+      font-size: 1.2rem;
+      transition: 0.3s;
     }
 
-    /* 👋🏻 waving animation */
+    #sidebar ul li a:hover {
+      color: #ffffff;
+      text-shadow: 0 0 10px #00ffe0;
+    }
+
+    @media (max-width: 768px) {
+      .glass-panel {
+        margin: 1rem;
+        padding: 1.5rem;
+      }
+
+      .avatar {
+        width: 120px;
+      }
+
+      .typing-box {
+        font-size: 1.5rem;
+      }
+    }
+
     .wave {
       display: inline-block;
-      animation: wave-hand 2s infinite;
+      animation: wave-animation 2s infinite;
       transform-origin: 70% 70%;
     }
 
-    @keyframes wave-hand {
+    @keyframes wave-animation {
       0% { transform: rotate(0deg); }
-      10% { transform: rotate(14deg); }
-      20% { transform: rotate(-8deg); }
-      30% { transform: rotate(14deg); }
-      40% { transform: rotate(-4deg); }
-      50% { transform: rotate(10deg); }
-      60% { transform: rotate(0deg); }
+      15% { transform: rotate(14deg); }
+      30% { transform: rotate(-8deg); }
+      40% { transform: rotate(14deg); }
+      50% { transform: rotate(-4deg); }
+      60% { transform: rotate(10deg); }
+      70% { transform: rotate(0deg); }
       100% { transform: rotate(0deg); }
     }
-  </style>    
-</head>    
-<body>    
-  <div id="particles-js"></div>    
+  </style>
+</head>
 
-  <div id="menu-toggle">    
-    <div class="bar1"></div>    
-    <div class="bar2"></div>    
-    <div class="bar3"></div>    
-  </div>    
+<body>
+  <div id="particles-js"></div>
 
-  <nav id="sidebar">    
-    <ul>    
-      <li><a href="#home">Home</a></li>    
-      <li><a href="#about">About</a></li>    
-      <li><a href="#contact">Contact</a></li>    
-    </ul>    
-  </nav>  
+  <div id="menu-toggle">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
 
-  <section id="home" style="text-align: center; padding-top: 4rem;">    
-    <img class="avatar" src="your-selfie.jpg" alt="Panda" width="150"/>    
-    <div class="typing-box">    
-      <span id="typed-text" class="neon-text"></span><span class="cursor"></span>    
-    </div>    
-    <div style="margin-top: 1.5rem;">    
-      <p style="font-size: 1.5rem; color: #00ffaa; margin: 0;">Hi There! <span class="wave">👋🏻</span></p>    
-      <p style="font-size: 2rem; font-weight: bold; color: #c084fc; margin: 0;">I'M PANDA</p>    
-    </div>    
-  </section>  
+  <nav id="sidebar">
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-  <section id="about" class="glass-panel">    
-    <h2 class="neon-text">About Me</h2>    
-    <p>    
-      Hello! I'm Panda (Rohith Abhi), a self-taught ethical hacker passionate about cybersecurity.<br><br>    
-      I specialize in uncovering vulnerabilities, ethically exploiting systems, and helping organizations strengthen their defenses.<br><br>    
-      I'm also learning Rust, Haskell, C++, and Prolog.    
-    </p>    
-    <img class="hacker-img" src="your-hacker-mask.jpg" alt="Hacker Panda with Mask" width="300">    
-  </section>  
+  <section id="home">
+    <img class="avatar" src="your-selfie.jpg" alt="Panda" />
+    <div class="typing-box">
+      <span id="typed-text" class="neon-text"></span><span class="cursor"></span>
+    </div>
+    <div style="text-align: center; margin-top: 1.5rem;">
+      <p style="font-size: 1.5rem; color: #00ffaa; margin: 0;">
+        Hi There! <span class="wave">👋🏻</span>
+      </p>
+      <p style="font-size: 2rem; font-weight: bold; color: #c084fc; margin: 0;">I'M PANDA</p>
+    </div>
+  </section>
 
-  <div class="contact glass-panel" id="contact">    
-    <h1 class="neon-text">Contact Me</h1>    
-    <p>    
-      <a href="mailto:ahanrohith123@gmail.com">    
-        <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" />    
-      </a>    
-      <a href="https://www.instagram.com/rohith__abhi">    
-        <img src="https://img.shields.io/badge/Instagram-E75480?style=for-the-badge&logo=instagram&logoColor=white" />    
-      </a>    
-      <a href="https://wa.me/919946605328">    
-        <img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" />    
-      </a>    
-    </p>    
-  </div>  
+  <section id="about" class="glass-panel">
+    <h2 class="neon-text">About Me</h2>
+    <p>
+      Hello! I'm Panda (Rohith Abhi), a self-taught ethical hacker passionate about cybersecurity.<br><br>
+      I specialize in uncovering vulnerabilities, ethically exploiting systems, and helping organizations strengthen their defenses.<br><br>
+      I'm also learning Rust, Haskell, C++, and Prolog.
+    </p>
+    <img class="hacker-img" src="your-hacker-mask.jpg" alt="Hacker Panda with Mask">
+  </section>
 
-  <footer style="text-align: center; padding: 1rem; color: #ccc;">    
-    Designed and Developed by Panda<br>    
-    © 2025 rohithabhi    
-  </footer>  
+  <div class="contact glass-panel" id="contact">
+    <h1 class="neon-text">Contact Me</h1>
+    <p>
+      <a href="mailto:ahanrohith123@gmail.com">
+        <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
+      </a>
+      <a href="https://www.instagram.com/rohith__abhi">
+        <img src="https://img.shields.io/badge/Instagram-E75480?style=for-the-badge&logo=instagram&logoColor=white" />
+      </a>
+      <a href="https://wa.me/919946605328">
+        <img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" />
+      </a>
+    </p>
+  </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>  
-  <script>    
-    particlesJS.load('particles-js', 'https://raw.githubusercontent.com/VincentGarreau/particles.js/master/demo/particles.json');
+  <footer>
+    Designed and Developed by Panda<br>
+    Copyright © 2025 rohithabhi
+  </footer>
 
-    const names = ["Panda", "P4nda", "PΛИDΛ", "𝙿𝙰𝙽𝙳𝙰", "ＰＡＮＤＡ"];    
-    const textEl = document.getElementById("typed-text");    
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <script>
+    particlesJS.load('particles-js', 'particles.json'); // Change to URL if needed
+
+    const names = ["Panda", "P4nda", "PΛИDΛ", "𝙿𝙰𝙽𝙳𝙰", "ＰＡＮＤＡ"];
+    const textEl = document.getElementById("typed-text");
     let nameIndex = 0, charIndex = 0, isDeleting = false, delayBeforeTyping = true;
 
     function typeEffect() {
       const currentName = names[nameIndex];
+
       if (delayBeforeTyping) {
         delayBeforeTyping = false;
         setTimeout(typeEffect, 800);
         return;
       }
+
       if (isDeleting) {
         charIndex--;
         textEl.textContent = currentName.substring(0, charIndex);
@@ -240,20 +303,17 @@
 
     toggle.addEventListener("click", () => {
       sidebar.classList.toggle("open");
-      toggle.classList.toggle("open");
     });
 
     document.querySelectorAll("#sidebar a").forEach(link => {
       link.addEventListener("click", () => {
         sidebar.classList.remove("open");
-        toggle.classList.remove("open");
       });
     });
 
     document.addEventListener("click", function (e) {
       if (!sidebar.contains(e.target) && !toggle.contains(e.target)) {
         sidebar.classList.remove("open");
-        toggle.classList.remove("open");
       }
     });
   </script>

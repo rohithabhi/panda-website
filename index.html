@@ -38,9 +38,8 @@
       opacity: 0;
     }
     #menu-toggle.open div:nth-child(3) {
-      transform: rotate(-45deg) translate(6px, -6px);
+      transform: rotate(-45deg) translate(5px, -5px);
     }
-
     #sidebar {
       position: fixed;
       top: 0;
@@ -79,7 +78,6 @@
       background-color: #111111;
       color: #00ffaa;
     }
-
     .avatar {
       width: 150px;
       height: 150px;
@@ -89,7 +87,6 @@
       margin: 30px auto 0;
       display: block;
     }
-
     .typing-box {
       font-size: 2rem;
       display: flex;
@@ -97,7 +94,6 @@
       justify-content: center;
       margin-top: 1rem;
     }
-
     .cursor {
       display: inline-block;
       width: 10px;
@@ -106,12 +102,10 @@
       background-color: #58a6ff;
       animation: blink 0.8s infinite;
     }
-
     @keyframes blink {
       0%, 50% { opacity: 1; }
       50.1%, 100% { opacity: 0; }
     }
-
     #about {
       background-color: rgba(28, 28, 28, 0.6);
       backdrop-filter: blur(10px);
@@ -121,17 +115,14 @@
       max-width: 800px;
       box-shadow: 0 0 20px rgba(0, 255, 150, 0.1);
     }
-
     #about h2 {
       color: #58a6ff;
       font-size: 2rem;
     }
-
     #about p {
       font-size: 1.1rem;
       line-height: 1.8;
     }
-
     .hacker-img {
       max-width: 100%;
       width: 300px;
@@ -142,39 +133,67 @@
       margin-left: auto;
       margin-right: auto;
     }
-
     .contact {
       padding: 2rem;
       text-align: center;
     }
-
     .contact h1 {
       color: #58a6ff;
       font-size: 2rem;
       margin-top: 3rem;
     }
-
     .contact p a {
       margin: 0.5rem;
       display: inline-block;
     }
-
     footer {
       text-align: center;
       padding: 1rem;
-      color: #888;
+      background-color: #0d0d0d;
       font-size: 0.9rem;
-      margin-top: 3rem;
+      color: #888;
+    }
+    /* Loading Screen */
+    #loading-screen {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #000;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.5s ease;
+    }
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 5px solid #333;
+      border-top: 5px solid #00ffaa;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
   </style>
 </head>
 <body>
+  <!-- Loading Screen -->
+  <div id="loading-screen">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Menu Toggle -->
   <div id="menu-toggle">
     <div></div>
     <div></div>
     <div></div>
   </div>
 
+  <!-- Sidebar -->
   <nav id="sidebar">
     <ul>
       <li><a href="#home">🏠 Home</a></li>
@@ -183,6 +202,7 @@
     </ul>
   </nav>
 
+  <!-- Home Section -->
   <div id="home">
     <img class="avatar" src="your-selfie.jpg" alt="Panda">
     <div class="typing-box">
@@ -190,16 +210,18 @@
     </div>
   </div>
 
+  <!-- About Section -->
   <section id="about">
     <h2>About Me</h2>
     <p>
       Hello! I'm <strong style="color:#00ffaa">Panda</strong> (Rohith Abhi) — a self-taught ethical hacker with a deep passion for cybersecurity and digital safety.<br><br>
       I specialize in uncovering vulnerabilities, ethically exploiting systems, and helping organizations strengthen their defenses.<br><br>
-      I'm also expanding my skill set by learning programming languages like <strong style="color:#ff79c6">Rust</strong>, <strong style="color:#bd93f9">Haskell</strong>, <strong style="color:#8be9fd">C++</strong>, and <strong style="color:#50fa7b">Prolog</strong>.
+      I'm also learning <strong style="color:#ff79c6">Rust</strong>, <strong style="color:#bd93f9">Haskell</strong>, <strong style="color:#8be9fd">C++</strong>, and <strong style="color:#50fa7b">Prolog</strong>.
     </p>
     <img class="hacker-img" src="your-hacker-mask.jpg" alt="Hacker Panda with Mask">
   </section>
 
+  <!-- Contact Section -->
   <div class="contact" id="contact">
     <h1><b>Contact Me</b></h1>
     <p>
@@ -215,36 +237,25 @@
     </p>
   </div>
 
+  <!-- Footer -->
   <footer>
     &copy; 2025 Panda (Rohith Abhi). All rights reserved.
   </footer>
 
+  <!-- Scripts -->
   <script>
-    const names = [
-      "Panda🐼",
-      "P4nda",
-      "P4NDA",
-      "PΛИDΛ",
-      "𝙿𝙰𝙽𝙳𝙰",
-      "ＰＡＮＤＡ",
-      "P.a.n.d.a"
-    ];
-
+    // Typing animation
+    const names = ["Panda🐼", "P4nda", "P4NDA", "PΛИDΛ", "𝙿𝙰𝙽𝙳𝙰", "ＰＡＮＤＡ", "P.a.n.d.a"];
     const textEl = document.getElementById("typed-text");
-    let nameIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    let delayBeforeTyping = true;
+    let nameIndex = 0, charIndex = 0, isDeleting = false, delayBeforeTyping = true;
 
     function typeEffect() {
       const currentName = names[nameIndex];
-
       if (delayBeforeTyping) {
         delayBeforeTyping = false;
         setTimeout(typeEffect, 800);
         return;
       }
-
       if (isDeleting) {
         charIndex--;
         textEl.textContent = currentName.substring(0, charIndex);
@@ -270,6 +281,7 @@
 
     typeEffect();
 
+    // Sidebar Toggle
     const sidebar = document.getElementById("sidebar");
     const toggle = document.getElementById("menu-toggle");
 
@@ -290,6 +302,13 @@
         sidebar.classList.remove("open");
         toggle.classList.remove("open");
       });
+    });
+
+    // Loading screen
+    window.addEventListener('load', () => {
+      const loader = document.getElementById('loading-screen');
+      loader.style.opacity = 0;
+      setTimeout(() => loader.style.display = 'none', 500);
     });
   </script>
 </body>

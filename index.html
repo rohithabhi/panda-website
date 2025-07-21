@@ -67,9 +67,8 @@
     .avatar {
       border: 3px solid #00ffaa;
       box-shadow: 0 0 20px #00ffaa;
-      border-radius: 12px;
-      width: 100%;
-      max-width: 400px;
+      border-radius: 50%;
+      width: 150px;
       display: block;
       margin: 2rem auto 1rem;
     }
@@ -108,15 +107,20 @@
       color: #888;
     }
 
-    .menu-icon {
+    #menu-toggle {
       position: fixed;
       top: 20px;
       left: 20px;
-      font-size: 28px;
-      color: #00f0ff;
       cursor: pointer;
       z-index: 999;
-      transition: all 0.3s ease;
+    }
+
+    #menu-toggle div {
+      width: 30px;
+      height: 4px;
+      background-color: #00f0ff;
+      margin: 6px 0;
+      transition: 0.4s;
     }
 
     #sidebar {
@@ -165,8 +169,7 @@
       }
 
       .avatar {
-        width: 100%;
-        max-width: 300px;
+        width: 120px;
       }
 
       .typing-box {
@@ -196,7 +199,11 @@
 <body>
   <div id="particles-js"></div>
 
-  <div id="menu-toggle" class="menu-icon">☰</div>
+  <div id="menu-toggle">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
 
   <nav id="sidebar">
     <ul>
@@ -207,7 +214,7 @@
   </nav>
 
   <section id="home">
-    <img class="avatar" src="images/panda-hacker.jpg" alt="Panda Hacker" />
+    <img class="avatar" src="your-selfie.jpg" alt="Panda" />
     <div class="typing-box">
       <span id="typed-text" class="neon-text"></span><span class="cursor"></span>
     </div>
@@ -253,12 +260,26 @@
   <script>
     particlesJS("particles-js", {
       "particles": {
-        "number": { "value": 100, "density": { "enable": true, "value_area": 800 }},
+        "number": {
+          "value": 100,
+          "density": { "enable": true, "value_area": 800 }
+        },
         "color": { "value": "#ffffff" },
         "shape": { "type": "circle" },
-        "opacity": { "value": 0.5, "random": false },
-        "size": { "value": 2, "random": true },
-        "move": { "enable": true, "speed": 1, "direction": "none", "out_mode": "out" }
+        "opacity": {
+          "value": 0.5,
+          "random": false
+        },
+        "size": {
+          "value": 2,
+          "random": true
+        },
+        "move": {
+          "enable": true,
+          "speed": 1,
+          "direction": "none",
+          "out_mode": "out"
+        }
       },
       "interactivity": {
         "events": {
@@ -316,20 +337,17 @@
 
     toggle.addEventListener("click", () => {
       sidebar.classList.toggle("open");
-      toggle.textContent = sidebar.classList.contains("open") ? "❌" : "☰";
     });
 
     document.querySelectorAll("#sidebar a").forEach(link => {
       link.addEventListener("click", () => {
         sidebar.classList.remove("open");
-        toggle.textContent = "☰";
       });
     });
 
     document.addEventListener("click", function (e) {
       if (!sidebar.contains(e.target) && !toggle.contains(e.target)) {
         sidebar.classList.remove("open");
-        toggle.textContent = "☰";
       }
     });
   </script>
